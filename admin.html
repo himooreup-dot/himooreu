@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin – HimooreUP</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="style.css">
+<style>
+body { background:var(--dark); }
+.adm-shell { display:flex; min-height:100vh; }
+
+/* ── Image upload zone ── */
+.img-upload-zone {
+  border: 2px dashed rgba(255,255,255,.18);
+  border-radius: 16px;
+  padding: 0;
+  cursor: pointer;
+  transition: all .25s;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255,255,255,.04);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-upload-zone:hover { border-color: var(--blue3); background: rgba(29,111,164,.07); }
+.img-upload-zone.has-img { border-style: solid; border-color: rgba(255,255,255,.2); }
+
+.img-upload-placeholder {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: .6rem; padding: 2rem; text-align: center;
+}
+.img-upload-placeholder .upl-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.img-upload-placeholder p {
+  color: rgba(255,255,255,.45); font-size: .85rem; line-height: 1.5;
+}
+.img-upload-placeholder span {
+  font-size: .72rem; color: rgba(255,255,255,.25);
+}
+
+#imgPreviewEl {
+  width: 100%; height: 180px;
+  object-fit: cover; display: none;
+}
+.img-upload-zone.has-img #imgPreviewEl { display: block; }
+.img-upload-zone.has-img .img-upload-placeholder { display: none; }
+
+.img-overlay-btns {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,.75));
+  display: none; align-items: center; justify-content: flex-end;
+  gap: .5rem; padding: .7rem;
+}
+.img-upload-zone.has-img .img-overlay-btns { display: flex; }
+.img-ovr-btn {
+  padding: 5px 12px; border-radius: 50px; border: none;
+  font-family: 'Outfit', sans-serif; font-size: .75rem;
+  font-weight: 700; cursor: pointer; transition: all .2s;
+}
+.img-ovr-btn-change { background: rgba(255,255,255,.9); color: #111; }
+.img-ovr-btn-remove { background: rgba(229,57,53,.85); color: #fff; }
+.img-ovr-btn:hover  { transform: translateY(-1px); }
+
+/* ── Thumbnail in table ── */
+.prod-thumb-cell {
+  width: 48px; height: 40px; border-radius: 8px;
+  object-fit: cover; display: block;
+}
+.prod-thumb-placeholder {
+  width: 48px; height: 40px; border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; color: rgba(255,255,255,.3);
+}
+
+/* ── Upload progress ── */
+.upload-progress {
+  height: 3px; background: rgba(255,255,255,.1);
+  border-radius: 2px; overflow: hidden; margin-top: .5rem; display: none;
+}
+.upload-progress-bar {
+  height: 100%; background: linear-gradient(90deg, var(--blue), var(--green));
+  border-radius: 2px; width: 0; transition: width .3s ease;
+}
+.img-size-hint {
+  font-size: .75rem; color: rgba(255,255,255,.3);
+  margin-top: .4rem; text-align: center;
+}
+
+/* ── Form layout ── */
+.form-section-title {
+  font-size: .72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; color: rgba(255,255,255,.35);
+  padding-bottom: .6rem; border-bottom: 1px solid rgba(255,255,255,.07);
+  margin-bottom: 1rem; margin-top: 1.5rem;
+}
+.form-section-title:first-of-type { margin-top: 0; }
+
+/* ── Edit badge ── */
+.editing-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(245,166,35,.15); color: #f5c842;
+  font-size: .75rem; font-weight: 800;
+  padding: 4px 12px; border-radius: 50px;
+  border: 1px solid rgba(245,166,35,.3);
+}
+</style>
+</head>
+<body>
+<div class="adm-shell">
+
+  <!-- ─── SIDEBAR ─── -->
+  <aside class="adm-side">
+    <div class="adm-logo">
+      <div class="wm">HIMOOR<span>EUP</span></div>
+      <div class="sub">Administration</div>
+    </div>
+    <nav class="adm-nav">
+      <div class="ani on" onclick="admV('dashboard',this)"><span>📊</span> Dashboard</div>
+      <div class="ani"    onclick="admV('products',this)"><span>📦</span> Produits</div>
+      <div class="ani"    onclick="admV('users',this)"><span>👥</span> Utilisateurs</div>
+      <div class="ani"    onclick="admV('files',this)"><span>📁</span> Fichiers</div>
+    </nav>
+    <div class="adm-bottom">
+      <div class="ani" onclick="window.open('index.html','_blank')"><span>🏠</span> Voir le site</div>
+      <div class="ani" onclick="doAdminLogout()"><span>🚪</span> Déconnexion</div>
+    </div>
+  </aside>
+
+  <!-- ─── MAIN ─── -->
+  <div class="adm-main">
+    <div class="adm-topbar">
+      <h1 id="admTitle">📊 Dashboard</h1>
+      <div style="display:flex;align-items:center;gap:.75rem">
+        <span style="color:rgba(255,255,255,.4);font-size:.82rem" id="admDate"></span>
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.88rem">A</div>
+      </div>
+    </div>
+
+    <div class="adm-content">
+
+      <!-- ══ DASHBOARD ══ -->
+      <div class="adm-view on" id="admDashboard">
+        <div class="adm-kpis">
+          <div class="adm-kpi"><div class="adm-kpi-label">Utilisateurs</div><div class="adm-kpi-val" id="kU">0</div></div>
+          <div class="adm-kpi"><div class="adm-kpi-label">Produits actifs</div><div class="adm-kpi-val" id="kP">0</div></div>
+          <div class="adm-kpi"><div class="adm-kpi-label">Téléchargements</div><div class="adm-kpi-val" id="kD">0</div></div>
+          <div class="adm-kpi"><div class="adm-kpi-label">Fichiers uploadés</div><div class="adm-kpi-val" id="kF">0</div></div>
+        </div>
+        <div class="atw">
+          <div class="ath"><h3>Dernières inscriptions</h3></div>
+          <table><thead><tr><th>Nom</th><th>WhatsApp</th><th>Email</th><th>Inscrit le</th></tr></thead>
+          <tbody id="admUT"></tbody></table>
+        </div>
+      </div>
+
+      <!-- ══ PRODUCTS ══ -->
+      <div class="adm-view" id="admProducts">
+        <div class="adm-form">
+
+          <!-- Header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem">
+            <h3 id="formHeading" style="margin:0">➕ Ajouter un produit</h3>
+            <span class="editing-badge" id="editBadge" style="display:none">✏️ Modification en cours</span>
+          </div>
+          <input type="hidden" id="ePid">
+
+          <!-- ── Section 1: Image ── -->
+          <div class="form-section-title">🖼️ Image du produit</div>
+
+          <div style="display:grid;grid-template-columns:200px 1fr;gap:1.5rem;align-items:start">
+            <!-- Upload zone -->
+            <div>
+              <div class="img-upload-zone" id="imgUploadZone" onclick="triggerImgInput()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+                <div class="img-upload-placeholder">
+                  <div class="upl-icon">🖼️</div>
+                  <p>Clique ou glisse une image</p>
+                  <span>JPG, PNG, WEBP · max 2 MB</span>
+                </div>
+                <img id="imgPreviewEl" src="" alt="Aperçu image produit">
+                <div class="img-overlay-btns">
+                  <button class="img-ovr-btn img-ovr-btn-change" onclick="event.stopPropagation();triggerImgInput()">🔄 Changer</button>
+                  <button class="img-ovr-btn img-ovr-btn-remove" onclick="event.stopPropagation();removeImg()">🗑️ Supprimer</button>
+                </div>
+              </div>
+              <div class="upload-progress" id="uploadProgress">
+                <div class="upload-progress-bar" id="uploadBar"></div>
+              </div>
+              <div class="img-size-hint" id="imgSizeHint"></div>
+            </div>
+
+            <!-- Image tips -->
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.2rem">
+              <div style="font-weight:800;color:#fff;font-size:.88rem;margin-bottom:.8rem">💡 Conseils pour l'image</div>
+              <div style="display:flex;flex-direction:column;gap:.55rem;font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.5">
+                <div>📐 <strong style="color:rgba(255,255,255,.7)">Format recommandé :</strong> 800×500px ou 16:9</div>
+                <div>🎨 <strong style="color:rgba(255,255,255,.7)">Style :</strong> Visuel professionnel ou couverture ebook</div>
+                <div>📦 <strong style="color:rgba(255,255,255,.7)">Poids max :</strong> 2 MB (JPG ou PNG)</div>
+                <div>✅ <strong style="color:rgba(255,255,255,.7)">Stockage :</strong> Convertie en base64 dans le navigateur</div>
+              </div>
+              <div style="margin-top:1rem;padding:.75rem;background:rgba(29,111,164,.12);border-radius:10px;font-size:.78rem;color:var(--blue3)">
+                💬 L'image s'affichera à la place de l'emoji sur la carte produit et sur la page de détail.
+              </div>
+            </div>
+          </div>
+
+          <input type="file" id="imgFileInput" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handleImgUpload(this)">
+
+          <!-- ── Section 2: Infos ── -->
+          <div class="form-section-title">📋 Informations du produit</div>
+
+          <div class="adm-g2">
+            <div>
+              <label>Titre du produit *</label>
+              <input type="text" id="apT" placeholder="Ex: Marketing Digital de A à Z">
+            </div>
+            <div>
+              <label>Type *</label>
+              <select id="apTy">
+                <option value="formation">🎓 Formation</option>
+                <option value="ebook">📖 Ebook</option>
+              </select>
+            </div>
+            <div>
+              <label>Catégorie *</label>
+              <select id="apC">
+                <option value="digital">💻 Digital</option>
+                <option value="business">💼 Business</option>
+                <option value="finance">💰 Finance</option>
+                <option value="personal">🧘 Développement personnel</option>
+              </select>
+            </div>
+            <div>
+              <label>Prix FCFA (0 = Gratuit) *</label>
+              <input type="number" id="apPr" placeholder="15000" min="0">
+            </div>
+            <div>
+              <label>Note ★ (ex: 4.8)</label>
+              <input type="text" id="apR" placeholder="4.8">
+            </div>
+            <div>
+              <label>Nombre de téléchargements (affichage)</label>
+              <input type="number" id="apDlInit" placeholder="0" min="0">
+            </div>
+          </div>
+
+          <div style="margin-top:.5rem">
+            <label>Description *</label>
+            <textarea id="apD" rows="3" placeholder="Description affichée dans le catalogue et sur la fiche produit..."></textarea>
+          </div>
+
+          <!-- ── Section 3: Livraison ── -->
+          <div class="form-section-title">📥 Livraison</div>
+
+          <div>
+            <label>Lien de téléchargement (Google Drive, Dropbox…)</label>
+            <input type="url" id="apF" placeholder="https://drive.google.com/file/d/...">
+            <div style="font-size:.75rem;color:rgba(255,255,255,.3);margin-top:.3rem">Ce lien est envoyé à l'acheteur après confirmation WhatsApp.</div>
+          </div>
+
+          <!-- ── Actions ── -->
+          <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
+            <button class="btn btn-primary btn-lg" onclick="saveProd()">💾 Enregistrer le produit</button>
+            <button class="btn" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);padding:14px 20px;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:700" onclick="clearPF()">✕ Annuler</button>
+          </div>
+        </div>
+
+        <!-- ── Table ── -->
+        <div class="atw" style="margin-top:1.5rem">
+          <div class="ath">
+            <h3>Tous les produits (<span id="pCount">0</span>)</h3>
+            <input class="adm-search" placeholder="🔍 Rechercher..." oninput="renderAdmP(this.value)">
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width:60px">Image</th>
+                <th>Titre</th>
+                <th>Type</th>
+                <th>Catégorie</th>
+                <th>Prix</th>
+                <th>Téléch.</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admPT"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ USERS ══ -->
+      <div class="adm-view" id="admUsers">
+        <div class="atw">
+          <div class="ath">
+            <h3>Utilisateurs (<span id="uCount">0</span>)</h3>
+            <input class="adm-search" placeholder="🔍 Rechercher..." oninput="renderAdmU(this.value)">
+          </div>
+          <table>
+            <thead><tr><th>Nom</th><th>WhatsApp</th><th>Email</th><th>Téléch.</th><th>Inscrit le</th><th>Actions</th></tr></thead>
+            <tbody id="admUFT"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ FILES ══ -->
+      <div class="adm-view" id="admFiles">
+        <div class="adm-form">
+          <h3>📁 Gestion des fichiers</h3>
+          <p style="color:rgba(255,255,255,.45);font-size:.85rem;margin-bottom:1rem">Téléverse tes PDFs, vidéos ou ZIPs et associe les URLs aux produits.</p>
+          <div class="upload-zone" onclick="document.getElementById('fInput').click()">
+            <div style="font-size:2.5rem">📤</div>
+            <p style="color:rgba(255,255,255,.4);margin-top:.5rem;font-size:.85rem">Clique ou glisse-dépose ton fichier</p>
+            <p style="color:rgba(255,255,255,.25);font-size:.75rem;margin-top:.3rem">PDF, MP4, ZIP — max 500 MB</p>
+          </div>
+          <input type="file" id="fInput" style="display:none" onchange="handleFU(this)">
+          <div id="fPills" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem"></div>
+        </div>
+        <div class="atw">
+          <div class="ath"><h3>Fichiers enregistrés (<span id="fCount">0</span>)</h3></div>
+          <table>
+            <thead><tr><th>Nom</th><th>Type</th><th>Taille</th><th>URL</th><th></th></tr></thead>
+            <tbody id="admFT"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- end adm-content -->
+  </div><!-- end adm-main -->
+</div>
+
+<script src="script.js"></script>
+<script>
+/* ═══════════════════════════════════════════════
+   ADMIN AUTH
+═══════════════════════════════════════════════ */
+const _awa = localStorage.getItem('him_adminWa');
+const _apw = localStorage.getItem('him_adminPwd');
+if (_awa !== 'admin' || _apw !== 'admin123') { window.location.href = 'login.html'; }
+
+document.getElementById('admDate').textContent = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+
+function doAdminLogout() {
+  localStorage.removeItem('him_adminWa');
+  localStorage.removeItem('him_adminPwd');
+  window.location.href = 'login.html';
+}
+
+/* ═══════════════════════════════════════════════
+   VIEW SWITCHER
+═══════════════════════════════════════════════ */
+function admV(view, btn) {
+  document.querySelectorAll('.adm-view').forEach(el => el.classList.remove('on'));
+  document.querySelectorAll('.ani').forEach(el => el.classList.remove('on'));
+  const el = document.getElementById('adm' + view.charAt(0).toUpperCase() + view.slice(1));
+  if (el) el.classList.add('on');
+  if (btn) btn.classList.add('on');
+  const titles = { dashboard:'📊 Dashboard', products:'📦 Produits', users:'👥 Utilisateurs', files:'📁 Fichiers' };
+  document.getElementById('admTitle').textContent = titles[view] || view;
+  if (view === 'dashboard') renderAdmD();
+  if (view === 'products')  renderAdmP();
+  if (view === 'users')     renderAdmU();
+  if (view === 'files')     renderAdmF();
+}
+
+/* ═══════════════════════════════════════════════
+   IMAGE UPLOAD
+═══════════════════════════════════════════════ */
+let currentImgBase64 = ''; // stocke l'image en base64
+
+function triggerImgInput() {
+  document.getElementById('imgFileInput').click();
+}
+
+function handleImgUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  // Validation type
+  if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+    toast('Format non supporté. Utilise JPG, PNG ou WEBP.', 'error');
+    return;
+  }
+  // Validation taille (2 MB)
+  if (file.size > 2 * 1024 * 1024) {
+    toast('Image trop lourde. Max 2 MB.', 'error');
+    return;
+  }
+
+  // Progress bar
+  const progress = document.getElementById('uploadProgress');
+  const bar      = document.getElementById('uploadBar');
+  progress.style.display = 'block';
+  bar.style.width = '0%';
+
+  const reader = new FileReader();
+
+  reader.onprogress = e => {
+    if (e.lengthComputable) {
+      bar.style.width = Math.round((e.loaded / e.total) * 80) + '%';
+    }
+  };
+
+  reader.onload = e => {
+    bar.style.width = '100%';
+    setTimeout(() => { progress.style.display = 'none'; bar.style.width = '0%'; }, 500);
+
+    currentImgBase64 = e.target.result;
+    const preview = document.getElementById('imgPreviewEl');
+    const zone    = document.getElementById('imgUploadZone');
+    const hint    = document.getElementById('imgSizeHint');
+
+    preview.src = currentImgBase64;
+    zone.classList.add('has-img');
+
+    const kb = (file.size / 1024).toFixed(0);
+    hint.textContent = `${file.name} · ${kb} KB · ${file.type.split('/')[1].toUpperCase()}`;
+
+    toast('✅ Image chargée avec succès', 'success');
+  };
+
+  reader.onerror = () => { toast('Erreur lors de la lecture de l\'image.', 'error'); };
+  reader.readAsDataURL(file);
+
+  // Reset input so same file can be re-selected
+  input.value = '';
+}
+
+function removeImg() {
+  currentImgBase64 = '';
+  const preview = document.getElementById('imgPreviewEl');
+  const zone    = document.getElementById('imgUploadZone');
+  preview.src   = '';
+  zone.classList.remove('has-img');
+  document.getElementById('imgSizeHint').textContent = '';
+  toast('Image supprimée', 'info');
+}
+
+// Drag & drop
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('imgUploadZone').style.borderColor = 'var(--blue3)';
+  document.getElementById('imgUploadZone').style.background  = 'rgba(29,111,164,.1)';
+}
+function handleDragLeave(e) {
+  document.getElementById('imgUploadZone').style.borderColor = '';
+  document.getElementById('imgUploadZone').style.background  = '';
+}
+function handleDrop(e) {
+  e.preventDefault();
+  handleDragLeave(e);
+  const file = e.dataTransfer.files[0];
+  if (!file) return;
+  // Simulate file input
+  const dt = new DataTransfer();
+  dt.items.add(file);
+  document.getElementById('imgFileInput').files = dt.files;
+  handleImgUpload(document.getElementById('imgFileInput'));
+}
+
+/* ═══════════════════════════════════════════════
+   DASHBOARD
+═══════════════════════════════════════════════ */
+function renderAdmD() {
+  const prods = S.products;
+  document.getElementById('kU').textContent = S.users.length;
+  document.getElementById('kP').textContent = prods.filter(p => p.active).length;
+  document.getElementById('kD').textContent = prods.reduce((s, p) => s + (p.downloads || 0), 0);
+  document.getElementById('kF').textContent = S.files.length;
+  document.getElementById('admUT').innerHTML = S.users.slice(-10).reverse().map(u =>
+    `<tr>
+      <td>${u.name}</td>
+      <td>${u.wa}</td>
+      <td>${u.email || '—'}</td>
+      <td>${new Date(u.createdAt).toLocaleDateString('fr-FR')}</td>
+    </tr>`).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   PRODUCTS TABLE
+═══════════════════════════════════════════════ */
+function renderAdmP(f = '') {
+  const list = S.products.filter(p => !f || p.title.toLowerCase().includes(f.toLowerCase()));
+  document.getElementById('pCount').textContent = list.length;
+
+  document.getElementById('admPT').innerHTML = list.map(p => {
+    const imgCell = p.image
+      ? `<img src="${p.image}" alt="${p.title}" class="prod-thumb-cell">`
+      : `<div class="prod-thumb-placeholder">—</div>`;
+
+    return `
+      <tr>
+        <td>${imgCell}</td>
+        <td style="font-weight:700;color:rgba(255,255,255,.9)">${p.title}</td>
+        <td><span class="ast ${p.price === 0 ? 'st-free' : 'st-paid'}">${p.type}</span></td>
+        <td style="text-transform:capitalize;color:rgba(255,255,255,.5)">${p.cat}</td>
+        <td>${p.price === 0 ? '<span style="color:var(--green2);font-weight:700">Gratuit</span>' : '<span style="color:var(--blue3)">' + fmtPrice(p.price) + '</span>'}</td>
+        <td style="color:rgba(255,255,255,.5)">${p.downloads || 0}</td>
+        <td>
+          <div class="adm-ar">
+            <button class="btn btn-ghost btn-sm" style="font-size:.75rem;padding:5px 10px;color:rgba(255,255,255,.7)" onclick="editP('${p.id}')">✏️ Éditer</button>
+            <button class="btn btn-danger btn-sm" style="font-size:.75rem;padding:5px 10px" onclick="delP('${p.id}')">🗑️</button>
+          </div>
+        </td>
+      </tr>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   SAVE PRODUCT
+═══════════════════════════════════════════════ */
+function saveProd() {
+  const title = document.getElementById('apT').value.trim();
+  const type  = document.getElementById('apTy').value;
+  const cat   = document.getElementById('apC').value;
+  const price = parseInt(document.getElementById('apPr').value) || 0;
+  const desc  = document.getElementById('apD').value.trim();
+  const rating= document.getElementById('apR').value.trim() || '4.5';
+  const file  = document.getElementById('apF').value.trim();
+  const dlInit= parseInt(document.getElementById('apDlInit').value) || 0;
+  const id    = document.getElementById('ePid').value;
+
+  if (!title) { toast('Le titre est obligatoire', 'error'); return; }
+  if (!desc)  { toast('La description est obligatoire', 'error'); return; }
+
+  const prods = S.products;
+  const prod = {
+    id:        id || ('p' + Date.now()),
+    title, type, cat, price, desc, rating, file,
+    image:     currentImgBase64 || (id ? (prods.find(p => p.id === id)?.image || '') : ''),
+    downloads: id ? (prods.find(p => p.id === id)?.downloads || dlInit) : dlInit,
+    active:    true,
+  };
+
+  if (id) {
+    const idx = prods.findIndex(p => p.id === id);
+    if (idx >= 0) prods[idx] = prod;
+    else prods.push(prod);
+  } else {
+    prods.push(prod);
+  }
+
+  S.products = prods;
+  toast(id ? '✅ Produit modifié avec succès' : '✅ Produit ajouté avec succès', 'success');
+  clearPF();
+  renderAdmP();
+}
+
+/* ═══════════════════════════════════════════════
+   EDIT PRODUCT
+═══════════════════════════════════════════════ */
+function editP(id) {
+  const p = S.products.find(x => x.id === id);
+  if (!p) return;
+
+  // Populate form
+  document.getElementById('ePid').value    = p.id;
+  document.getElementById('apT').value     = p.title;
+  document.getElementById('apTy').value    = p.type;
+  document.getElementById('apC').value     = p.cat;
+  document.getElementById('apPr').value    = p.price;
+  document.getElementById('apR').value     = p.rating || '';
+  document.getElementById('apDlInit').value= p.downloads || 0;
+  document.getElementById('apD').value     = p.desc;
+  document.getElementById('apF').value     = p.file || '';
+
+  // Load existing image if any
+  if (p.image) {
+    currentImgBase64 = p.image;
+    document.getElementById('imgPreviewEl').src = p.image;
+    document.getElementById('imgUploadZone').classList.add('has-img');
+    document.getElementById('imgSizeHint').textContent = 'Image existante chargée';
+  } else {
+    removeImg();
+  }
+
+  // UI feedback
+  document.getElementById('formHeading').textContent = '✏️ Modifier le produit';
+  document.getElementById('editBadge').style.display = 'inline-flex';
+
+  // Scroll to form
+  document.getElementById('admProducts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ═══════════════════════════════════════════════
+   CLEAR FORM
+═══════════════════════════════════════════════ */
+function clearPF() {
+  ['ePid','apT','apD','apF','apR','apPr','apDlInit'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('apTy').value = 'formation';
+  document.getElementById('apC').value  = 'digital';
+  removeImg();
+  document.getElementById('formHeading').textContent  = '➕ Ajouter un produit';
+  document.getElementById('editBadge').style.display  = 'none';
+}
+
+/* ═══════════════════════════════════════════════
+   USERS
+═══════════════════════════════════════════════ */
+function renderAdmU(f = '') {
+  const list = S.users.filter(u => !f || u.name.toLowerCase().includes(f) || u.wa.includes(f));
+  document.getElementById('uCount').textContent = list.length;
+  document.getElementById('admUFT').innerHTML = list.map(u => `
+    <tr>
+      <td>${u.name}</td>
+      <td>${u.wa}</td>
+      <td>${u.email || '—'}</td>
+      <td>${(u.purchases || []).length}</td>
+      <td>${new Date(u.createdAt).toLocaleDateString('fr-FR')}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" style="font-size:.72rem;padding:4px 9px" onclick="delU('${u.id}')">🗑️</button>
+      </td>
+    </tr>`).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   FILES
+═══════════════════════════════════════════════ */
+function renderAdmF() {
+  const files = S.files;
+  document.getElementById('fCount').textContent = files.length;
+  document.getElementById('admFT').innerHTML = files.map(f => `
+    <tr>
+      <td style="font-weight:600;color:rgba(255,255,255,.8)">${f.name}</td>
+      <td style="text-transform:uppercase;font-size:.75rem;color:rgba(255,255,255,.4)">${f.type}</td>
+      <td style="color:rgba(255,255,255,.4)">${f.size}</td>
+      <td><span style="font-size:.7rem;color:var(--blue3);word-break:break-all">${f.url ? f.url.substring(0, 55) + '…' : '—'}</span></td>
+      <td>
+        <button class="btn btn-danger btn-sm" style="font-size:.72rem;padding:4px 9px" onclick="delF('${f.id}')">🗑️</button>
+      </td>
+    </tr>`).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   DELETE ACTIONS
+═══════════════════════════════════════════════ */
+function delP(id) {
+  if (!confirm('Supprimer ce produit définitivement ?')) return;
+  admDelProd(id); renderAdmP();
+  toast('Produit supprimé', 'info');
+}
+function delU(id) {
+  if (!confirm('Supprimer cet utilisateur ?')) return;
+  admDelUser(id); renderAdmU();
+  toast('Utilisateur supprimé', 'info');
+}
+function delF(id) { admDelFile(id); renderAdmF(); }
+
+/* ═══════════════════════════════════════════════
+   FILE UPLOAD (pour la section Fichiers)
+═══════════════════════════════════════════════ */
+function handleFU(input) {
+  const file = input.files[0]; if (!file) return;
+  admHandleFileUpload(file, fo => {
+    renderAdmF();
+    const pill = document.createElement('div');
+    pill.style.cssText = 'display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:5px 12px;font-size:.8rem;color:rgba(255,255,255,.75)';
+    pill.innerHTML = `📄 ${fo.name} <button style="background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:.9rem" onclick="this.parentElement.remove()">✕</button>`;
+    document.getElementById('fPills').appendChild(pill);
+    toast(`📤 "${fo.name}" ajouté`, 'success');
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
+renderAdmD();
+</script>
+</body>
+</html>

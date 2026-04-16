@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebooks Business & Finance – HimooreUP | Guides Pratiques Afrique</title>
+<meta name="description" content="Téléchargez nos ebooks sur le business en Afrique, la gestion financière, le marketing digital et le développement personnel. Des guides actionnables pour réussir.">
+<meta name="keywords" content="ebook business Afrique, ebook marketing digital, guide gestion financière, HimooreUP ebooks">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://himooreup.com/ebooks.html">
+<meta property="og:title" content="Ebooks Business & Finance – HimooreUP">
+<meta property="og:description" content="Guides pratiques et actionnables pour booster votre business en Afrique.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">HIMOOR<span>EUP</span></a>
+      <div class="nav-menu">
+        <a href="index.html">Accueil</a>
+        <a href="formations.html">Formations</a>
+        <a href="ebooks.html">Ebooks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-right" id="navRight">
+        <a href="login.html" class="btn btn-outline btn-sm">Connexion</a>
+        <a href="register.html" class="btn btn-green btn-sm">S'inscrire</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index.html">Accueil</a><a href="formations.html">Formations</a>
+  <a href="ebooks.html">Ebooks</a><a href="contact.html">Contact</a>
+  <div class="drawer-auth" style="display:flex;flex-direction:column;gap:.5rem;border-top:1px solid var(--border);padding-top:.8rem">
+    <a href="login.html">Connexion</a><a href="register.html">S'inscrire</a>
+  </div>
+</nav>
+
+<section class="page-hero" style="background:linear-gradient(160deg,#fff 0%,#e6f9ec 60%,#e6f4fb 100%)">
+  <div class="page-hero-blob page-hero-blob1"></div>
+  <div class="page-hero-blob page-hero-blob2"></div>
+  <div class="container page-hero-content">
+    <div style="max-width:640px">
+      <span class="sec-label sec-label-green" style="margin-bottom:1rem;display:inline-flex">📖 Ebooks Premium</span>
+      <h1 style="font-family:'Fraunces',serif;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--dark);margin-bottom:1rem;line-height:1.15">Des guides qui <em style="font-style:italic;color:var(--green)">transforment</em> ta façon de travailler</h1>
+      <p style="font-size:1.05rem;color:var(--muted);line-height:1.7;margin-bottom:2rem">Business, finance personnelle, marketing digital, développement personnel — nos ebooks sont conçus pour t'apporter des résultats concrets rapidement.</p>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+        <a href="#ebooksGrid" class="btn btn-green btn-lg">📖 Voir tous les ebooks</a>
+        <a href="register.html" class="btn btn-ghost btn-lg">Créer un compte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE EBOOKS HIGHLIGHT -->
+<section class="section-sm" style="background:var(--greenbg);border-bottom:1px solid #c0f0cb">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+      <div>
+        <span class="sec-label sec-label-green" style="margin-bottom:.4rem">🎁 Ebooks gratuits</span>
+        <h2 style="font-family:'Fraunces',serif;font-size:1.5rem;color:var(--dark)">Commence à apprendre sans dépenser</h2>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:.3rem">Crée ton compte et télécharge nos ebooks gratuits immédiatement.</p>
+      </div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+        <a href="register.html" class="btn btn-green">🚀 Créer mon compte</a>
+        <button class="btn btn-ghost" onclick="applyFilter('ebook-free',document.querySelector('[data-f=free]'))">Voir les gratuits →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ebooksGrid">
+  <div class="container">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem">
+      <div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Rechercher un ebook..." oninput="doSearch(this.value)" aria-label="Rechercher un ebook">
+        </div>
+        <div class="filters">
+          <button class="fpill on" onclick="applyFilter('ebook',this)">Tous</button>
+          <button class="fpill" onclick="applyFilter('ebook-business',this)">💼 Business</button>
+          <button class="fpill" onclick="applyFilter('ebook-digital',this)">💻 Digital</button>
+          <button class="fpill" onclick="applyFilter('ebook-finance',this)">💰 Finance</button>
+          <button class="fpill" onclick="applyFilter('ebook-personal',this)">🧘 Personnel</button>
+          <button class="fpill" data-f="free" onclick="applyFilter('ebook-free',this)">🎁 Gratuit</button>
+        </div>
+      </div>
+      <div id="resultCount" style="font-size:.88rem;color:var(--muted);align-self:flex-end"></div>
+    </div>
+    <div class="prod-grid" id="ebooksGridContent"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="fb-wm">HIMOOR<span>EUP</span></span><p>Centre de formation en ligne dédié à l'Afrique.</p></div>
+      <div class="footer-col"><h4>Catalogue</h4><a href="formations.html">Formations</a><a href="ebooks.html">Ebooks</a></div>
+      <div class="footer-col"><h4>Compte</h4><a href="register.html">S'inscrire</a><a href="login.html">Connexion</a><a href="dashboard.html">Mon espace</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">WhatsApp</a><a href="mailto:contact@himooreup.com">Email</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 HimooreUP · Tous droits réservés</p></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+let currentFilter = 'ebook';
+function applyFilter(f, btn) {
+  document.querySelectorAll('.fpill').forEach(b => b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  currentFilter = f;
+  document.getElementById('searchInput').value = '';
+  renderFiltered(f);
+}
+function renderFiltered(f) {
+  let list = S.products.filter(p => p.active && p.type === 'ebook');
+  if (f === 'ebook-free') list = list.filter(p => p.price === 0);
+  else if (f.startsWith('ebook-')) {
+    const cat = f.replace('ebook-', '');
+    list = list.filter(p => p.cat === cat);
+  }
+  const grid = document.getElementById('ebooksGridContent');
+  grid.innerHTML = list.length ? list.map(p => renderProductCard(p)).join('') : '<p style="color:var(--muted);text-align:center;padding:3rem;grid-column:1/-1">Aucun ebook trouvé.</p>';
+  document.getElementById('resultCount').textContent = list.length + ' ebook' + (list.length > 1 ? 's' : '');
+}
+function doSearch(q) {
+  if (!q.trim()) { renderFiltered(currentFilter); return; }
+  const list = S.products.filter(p => p.active && p.type === 'ebook' && (p.title.toLowerCase().includes(q.toLowerCase()) || p.desc.toLowerCase().includes(q.toLowerCase())));
+  document.getElementById('ebooksGridContent').innerHTML = list.length ? list.map(p => renderProductCard(p)).join('') : '<p style="color:var(--muted);text-align:center;padding:3rem;grid-column:1/-1">Aucun résultat pour "' + q + '".</p>';
+  document.getElementById('resultCount').textContent = list.length + ' résultat' + (list.length > 1 ? 's' : '');
+}
+document.addEventListener('DOMContentLoaded', () => renderFiltered('ebook'));
+</script>
+</body>
+</html>

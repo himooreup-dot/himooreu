@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Espace – HimooreUP</title>
+<meta name="description" content="Votre espace personnel HimooreUP. Accédez à vos formations et ebooks téléchargés.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="style.css">
+<style>
+.dash-page { padding-top: var(--nav-h); background: var(--light); min-height: 100vh; }
+.dash-wrap  { padding: 2rem 0 3rem; }
+.welcome-bar {
+  background: linear-gradient(135deg, var(--blue), var(--dark));
+  border-radius: var(--r2); padding: 2rem; color: #fff;
+  margin-bottom: 2rem; position: relative; overflow: hidden;
+}
+.welcome-bar h2 { font-family:'Fraunces',serif; font-size:1.6rem; margin-bottom:.3rem; }
+.welcome-bar p  { opacity:.75; font-size:.9rem; }
+.welcome-bar-bg { position:absolute; right:-20px; top:-20px; font-size:7rem; opacity:.1; }
+.tab-row { display:flex; gap:.5rem; border-bottom:2px solid var(--border); margin-bottom:2rem; overflow-x:auto; }
+.tab-btn { padding:10px 20px; border:none; background:none; font-family:'Outfit',sans-serif; font-weight:700; font-size:.88rem; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; white-space:nowrap; transition:all .2s; }
+.tab-btn:hover { color:var(--blue); }
+.tab-btn.on    { color:var(--blue); border-bottom-color:var(--blue); }
+.tab-content   { display:none; }
+.tab-content.on{ display:block; }
+.empty-state { text-align:center; padding:3rem; background:var(--white); border-radius:var(--r2); border:1.5px dashed var(--border); }
+.empty-state .es-icon { font-size:3rem; margin-bottom:1rem; }
+.empty-state h3 { font-weight:800; color:var(--dark); margin-bottom:.5rem; }
+.empty-state p  { color:var(--muted); font-size:.88rem; margin-bottom:1.5rem; }
+.profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.profile-field { }
+.profile-field label { display:block; font-weight:700; font-size:.82rem; color:var(--muted); margin-bottom:.4rem; text-transform:uppercase; letter-spacing:.5px; }
+.profile-field .pf-val { padding:11px 14px; border:2px solid var(--border); border-radius:12px; font-size:.92rem; color:var(--text); background:var(--light); }
+@media(max-width:640px){ .profile-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">HIMOOR<span>EUP</span></a>
+      <div class="nav-menu">
+        <a href="index.html">Accueil</a>
+        <a href="formations.html">Formations</a>
+        <a href="ebooks.html">Ebooks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-right" id="navRight"></div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index.html">Accueil</a><a href="formations.html">Formations</a>
+  <a href="ebooks.html">Ebooks</a><a href="contact.html">Contact</a>
+  <div class="drawer-auth" style="display:flex;flex-direction:column;gap:.5rem;border-top:1px solid var(--border);padding-top:.8rem">
+    <a href="dashboard.html">Mon espace</a>
+    <a href="index.html" onclick="logout()">Déconnexion</a>
+  </div>
+</nav>
+
+<div class="dash-page">
+  <div class="container dash-wrap">
+    <div class="welcome-bar">
+      <div class="welcome-bar-bg">🎓</div>
+      <h2 id="wName">Bienvenue !</h2>
+      <p>Voici ton espace personnel HimooreUP</p>
+      <div style="display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap">
+        <a href="formations.html" class="btn btn-green btn-sm">🎓 Voir les formations</a>
+        <a href="ebooks.html"     class="btn" style="background:rgba(255,255,255,.15);color:#fff;font-size:.85rem;padding:8px 18px;border-radius:50px">📖 Voir les ebooks</a>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="dash-kpis" style="margin-bottom:2rem">
+      <div class="kpi-card"><div class="kpi-icon">📥</div><div class="kpi-val" id="kDl">0</div><div class="kpi-label">Téléchargements</div></div>
+      <div class="kpi-card"><div class="kpi-icon">🎁</div><div class="kpi-val" id="kFree">0</div><div class="kpi-label">Ressources gratuites dispo</div></div>
+      <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-val">Actif</div><div class="kpi-label">Statut du compte</div></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-row">
+      <button class="tab-btn on" onclick="showTab('tab-dl',this)">📥 Mes téléchargements</button>
+      <button class="tab-btn"    onclick="showTab('tab-free',this)">🎁 Ressources gratuites</button>
+      <button class="tab-btn"    onclick="showTab('tab-profile',this)">👤 Mon profil</button>
+    </div>
+
+    <!-- TAB: downloads -->
+    <div id="tab-dl" class="tab-content on">
+      <div id="dlContent"></div>
+    </div>
+
+    <!-- TAB: free resources -->
+    <div id="tab-free" class="tab-content">
+      <div class="sec-head" style="text-align:left;margin-bottom:1.5rem">
+        <h3 style="font-family:'Fraunces',serif;font-size:1.3rem;color:var(--dark)">🎁 Ressources gratuites disponibles</h3>
+        <p style="color:var(--muted);font-size:.88rem">Ces ressources sont accessibles gratuitement. Télécharge-les directement !</p>
+      </div>
+      <div id="freeContent"></div>
+    </div>
+
+    <!-- TAB: profile -->
+    <div id="tab-profile" class="tab-content">
+      <div class="card card-p" style="max-width:580px">
+        <h3 style="font-family:'Fraunces',serif;font-size:1.3rem;color:var(--dark);margin-bottom:1.5rem">👤 Mon profil</h3>
+        <div class="profile-grid">
+          <div class="profile-field"><label>Nom complet</label><div class="pf-val" id="pfName">—</div></div>
+          <div class="profile-field"><label>WhatsApp</label><div class="pf-val" id="pfWa">—</div></div>
+          <div class="profile-field"><label>Email</label><div class="pf-val" id="pfEmail">—</div></div>
+          <div class="profile-field"><label>Membre depuis</label><div class="pf-val" id="pfDate">—</div></div>
+        </div>
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1.5px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn-wa btn-sm">💬 Contacter le support</a>
+          <button class="btn btn-ghost btn-sm" onclick="logout();window.location.href='index.html'">🚪 Se déconnecter</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <p>© 2025 HimooreUP · Tous droits réservés</p>
+      <a href="contact.html" class="btn btn-wa btn-sm">💬 Support WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (!requireAuth('login.html')) return;
+  const u = S.user;
+
+  // Welcome
+  document.getElementById('wName').textContent = '👋 Bonjour, ' + u.name.split(' ')[0] + ' !';
+
+  // KPIs
+  const purchases = u.purchases || [];
+  document.getElementById('kDl').textContent   = purchases.length;
+  document.getElementById('kFree').textContent = S.products.filter(p => p.price === 0 && p.active).length;
+
+  // Profile
+  document.getElementById('pfName').textContent  = u.name;
+  document.getElementById('pfWa').textContent    = u.wa;
+  document.getElementById('pfEmail').textContent = u.email || '—';
+  document.getElementById('pfDate').textContent  = new Date(u.createdAt).toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+
+  // Downloads
+  const dlList = S.products.filter(p => purchases.includes(p.id));
+  document.getElementById('dlContent').innerHTML = dlList.length
+    ? dlList.map(p => `
+        <div class="dash-item">
+          <div class="di-icon">${p.emoji}</div>
+          <div class="di-info">
+            <strong>${p.title}</strong>
+            <span>${p.type} · ${p.price === 0 ? 'Gratuit' : fmtPrice(p.price)}</span>
+          </div>
+          <div class="di-actions">
+            <button class="btn btn-primary btn-sm" onclick="downloadProduct(S.products.find(x=>x.id==='${p.id}'))">⬇️ Re-télécharger</button>
+          </div>
+        </div>`).join('')
+    : `<div class="empty-state">
+        <div class="es-icon">📭</div>
+        <h3>Aucun téléchargement pour l'instant</h3>
+        <p>Explore notre catalogue et commence à télécharger des ressources gratuites !</p>
+        <a href="formations.html" class="btn btn-primary">🎓 Explorer le catalogue</a>
+      </div>`;
+
+  // Free resources
+  const freeAll = S.products.filter(p => p.price === 0 && p.active);
+  document.getElementById('freeContent').innerHTML = freeAll.map(p => `
+    <div class="dash-item">
+      <div class="di-icon">${p.emoji}</div>
+      <div class="di-info">
+        <strong>${p.title}</strong>
+        <span>${p.type} · <span style="color:var(--green);font-weight:700">Gratuit</span></span>
+      </div>
+      <div class="di-actions">
+        <button class="btn btn-green btn-sm" onclick="downloadProduct(S.products.find(x=>x.id==='${p.id}'))">⬇️ Obtenir</button>
+      </div>
+    </div>`).join('');
+});
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

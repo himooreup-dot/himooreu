@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Pages privées — exclues de l'indexation
+Disallow: /dashboard.html
+Disallow: /admin.html
+Disallow: /login.html
+
+# Sitemap
+Sitemap: https://himooreup.com/sitemap.xml

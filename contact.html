@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & WhatsApp – HimooreUP</title>
+<meta name="description" content="Contactez HimooreUP sur WhatsApp pour commander nos formations et ebooks. Support disponible 7j/7, réponse en moins de 2h.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://himooreup.com/contact.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav id="navbar">
+  <div class="container"><div class="nav-inner">
+    <a href="index.html" class="nav-logo">HIMOOR<span>EUP</span></a>
+    <div class="nav-menu">
+      <a href="index.html">Accueil</a><a href="formations.html">Formations</a>
+      <a href="ebooks.html">Ebooks</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right" id="navRight">
+      <a href="login.html" class="btn btn-outline btn-sm">Connexion</a>
+      <a href="register.html" class="btn btn-green btn-sm">S'inscrire</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div></div>
+</nav>
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index.html">Accueil</a><a href="formations.html">Formations</a>
+  <a href="ebooks.html">Ebooks</a><a href="contact.html">Contact</a>
+  <div class="drawer-auth" style="display:flex;flex-direction:column;gap:.5rem;border-top:1px solid var(--border);padding-top:.8rem">
+    <a href="login.html">Connexion</a><a href="register.html">S'inscrire</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-blob page-hero-blob1"></div>
+  <div class="page-hero-blob page-hero-blob2"></div>
+  <div class="container page-hero-content" style="text-align:center">
+    <span class="sec-label sec-label-green" style="margin-bottom:1rem;display:inline-flex">📱 Contact</span>
+    <h1 style="font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);color:var(--dark);margin-bottom:1rem">Nous sommes là pour toi</h1>
+    <p style="color:var(--muted);font-size:1.05rem;max-width:500px;margin:0 auto">Des questions ? Tu veux commander une ressource ? Contacte-nous directement sur WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info-card">
+        <h2>Parlons ensemble 💬</h2>
+        <p>Notre équipe est disponible sur WhatsApp pour répondre à toutes tes questions et t'accompagner dans ta commande.</p>
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div><strong>WhatsApp Support</strong><span>Réponse en moins de 2h · 7j/7</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div><strong>contact@himooreup.com</strong><span>Réponse sous 24h</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">⏰</div>
+          <div><strong>Disponibilité</strong><span>Lun–Dim · 8h–22h (GMT)</span></div>
+        </div>
+        <div style="margin-top:2rem;background:rgba(255,255,255,.08);border-radius:14px;padding:1.2rem">
+          <div style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:.6rem">Pour commander une ressource :</div>
+          <div style="font-size:.85rem;color:rgba(255,255,255,.7);display:flex;flex-direction:column;gap:.4rem">
+            <div>1️⃣ Clique sur "Commander via WhatsApp" depuis une fiche produit</div>
+            <div>2️⃣ Ou envoie-nous directement le nom de la ressource souhaitée</div>
+            <div>3️⃣ On confirme et tu reçois ta ressource rapidement</div>
+          </div>
+        </div>
+      </div>
+      <!-- Form & buttons -->
+      <div>
+        <div class="form-card" style="margin-bottom:1.5rem">
+          <h3 style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--dark);margin-bottom:.5rem">Commander une ressource</h3>
+          <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.3rem">Remplis le formulaire et nous te contacterons sur WhatsApp.</p>
+          <div class="form-group">
+            <label>👤 Ton nom</label>
+            <input type="text" id="cName" placeholder="Amadou Diallo">
+          </div>
+          <div class="form-group">
+            <label>📱 Ton numéro WhatsApp</label>
+            <div class="icon-wrap"><span class="fg-icon">📲</span><input type="tel" id="cWa" placeholder="+221 7X XXX XX XX"></div>
+          </div>
+          <div class="form-group">
+            <label>📚 Ressource souhaitée</label>
+            <input type="text" id="cProduct" placeholder="Ex: Marketing Digital de A à Z">
+          </div>
+          <div class="form-group">
+            <label>💬 Message (optionnel)</label>
+            <textarea id="cMsg" rows="3" style="width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:12px;font-family:'Outfit',sans-serif;font-size:.93rem;resize:vertical;outline:none" placeholder="Toute question ou précision..."></textarea>
+          </div>
+          <button class="btn btn-wa btn-block btn-lg" onclick="sendWa()" style="margin-top:.3rem">💬 Envoyer via WhatsApp</button>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="card card-p">
+          <h3 style="font-weight:800;font-size:1rem;color:var(--dark);margin-bottom:1rem">Ou contacte-nous directement :</h3>
+          <div style="display:flex;flex-direction:column;gap:.8rem">
+            <a href="https://wa.me/votre_numero?text=Bonjour HimooreUP, j'ai une question sur vos formations." target="_blank" class="btn btn-wa btn-block">💬 WhatsApp — Question générale</a>
+            <a href="https://wa.me/votre_numero?text=Bonjour HimooreUP, je souhaite commander une ressource." target="_blank" class="btn btn-green btn-block">🛒 WhatsApp — Commander une ressource</a>
+            <a href="mailto:contact@himooreup.com" class="btn btn-outline btn-block">✉️ Envoyer un email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:#fff;padding-top:0">
+  <div class="container container-sm">
+    <div class="sec-head"><span class="sec-label sec-label-blue">❓ FAQ</span><h2>Questions fréquentes</h2></div>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="fb-wm">HIMOOR<span>EUP</span></span><p>Centre de formation en ligne dédié à l'Afrique.</p></div>
+      <div class="footer-col"><h4>Catalogue</h4><a href="formations.html">Formations</a><a href="ebooks.html">Ebooks</a></div>
+      <div class="footer-col"><h4>Compte</h4><a href="register.html">S'inscrire</a><a href="login.html">Connexion</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">WhatsApp</a><a href="mailto:contact@himooreup.com">Email</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 HimooreUP · Tous droits réservés</p></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+const faqs = [
+  { q: "Comment commander une ressource payante ?", a: "Clique sur le bouton 'Commander via WhatsApp' depuis la fiche produit ou depuis cette page. Tu seras redirigé sur WhatsApp avec le nom et le prix de la ressource déjà pré-remplis. Après confirmation et paiement, tu reçois ta ressource rapidement." },
+  { q: "Les ressources gratuites sont-elles vraiment gratuites ?", a: "Oui, totalement. Tu dois simplement créer un compte gratuit sur HimooreUP, puis tu peux télécharger toutes les ressources marquées 'GRATUIT' immédiatement, sans payer." },
+  { q: "Combien de temps après la commande je reçois ma ressource ?", a: "En général, la livraison se fait dans l'heure qui suit la confirmation du paiement. Notre équipe est disponible 7j/7 de 8h à 22h." },
+  { q: "Comment se passe le paiement ?", a: "Le paiement se fait directement via WhatsApp avec ton conseiller HimooreUP. On accepte Mobile Money (Orange Money, Wave, MTN), virement bancaire, et d'autres méthodes locales selon ton pays." },
+  { q: "Puis-je télécharger mes ressources sur plusieurs appareils ?", a: "Oui. Une fois ta ressource livrée, tu peux la télécharger et l'utiliser sur tous tes appareils (téléphone, tablette, ordinateur)." },
+  { q: "Y a-t-il un support si je ne comprends pas le contenu ?", a: "Oui, chaque ressource inclut un accès au support WhatsApp. Tu peux poser des questions à notre équipe qui répond en moins de 2h." },
+];
+document.getElementById('faqList').innerHTML = faqs.map((f, i) => `
+  <div style="background:var(--light);border-radius:16px;overflow:hidden;margin-bottom:.8rem;border:1.5px solid var(--border)">
+    <button style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;background:none;border:none;font-family:'Outfit',sans-serif;font-weight:700;font-size:.93rem;color:var(--dark);cursor:pointer;text-align:left;gap:1rem" onclick="toggleFaq(${i})">
+      ${f.q}<span id="faq-icon-${i}" style="font-size:1.1rem;flex-shrink:0;transition:transform .25s">＋</span>
+    </button>
+    <div id="faq-body-${i}" style="display:none;padding:0 1.4rem 1.2rem">
+      <p style="color:var(--muted);font-size:.88rem;line-height:1.7">${f.a}</p>
+    </div>
+  </div>`).join('');
+
+function toggleFaq(i) {
+  const body = document.getElementById('faq-body-'+i);
+  const icon = document.getElementById('faq-icon-'+i);
+  const open = body.style.display === 'block';
+  document.querySelectorAll('[id^=faq-body-]').forEach(b => b.style.display='none');
+  document.querySelectorAll('[id^=faq-icon-]').forEach(ic => { ic.textContent='＋'; ic.style.transform='rotate(0)'; });
+  if (!open) { body.style.display='block'; icon.textContent='✕'; icon.style.transform='rotate(45deg)'; }
+}
+
+function sendWa() {
+  const name    = document.getElementById('cName').value.trim();
+  const wa      = document.getElementById('cWa').value.trim();
+  const product = document.getElementById('cProduct').value.trim();
+  const msg     = document.getElementById('cMsg').value.trim();
+  if (!name || !wa) { toast('Remplis ton nom et ton numéro WhatsApp', 'error'); return; }
+  const text = `Bonjour HimooreUP 👋\nJe m'appelle ${name} (${wa}).\n${product ? 'Je souhaite commander : ' + product + '\n' : ''}${msg ? msg : ''}`;
+  window.open(`https://wa.me/votre_numero?text=${encodeURIComponent(text)}`, '_blank');
+}
+</script>
+</body>
+</html>

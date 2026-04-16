@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formations en ligne – HimooreUP | Marketing Digital, Business, Finance</title>
+<meta name="description" content="Découvrez nos formations en ligne : marketing digital, e-commerce, gestion financière, graphisme. Des formations pratiques pour booster votre business en Afrique.">
+<meta name="keywords" content="formation en ligne Afrique, formation marketing digital, formation e-commerce, formation business Afrique">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://himooreup.com/formations.html">
+<meta property="og:title" content="Formations en ligne – HimooreUP">
+<meta property="og:description" content="Formations pratiques et actionnables pour transformer vos compétences en Afrique.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Formations HimooreUP","description":"Catalogue de formations en ligne","url":"https://himooreup.com/formations.html"}</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">HIMOOR<span>EUP</span></a>
+      <div class="nav-menu">
+        <a href="index.html">Accueil</a>
+        <a href="formations.html">Formations</a>
+        <a href="ebooks.html">Ebooks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-right" id="navRight">
+        <a href="login.html" class="btn btn-outline btn-sm">Connexion</a>
+        <a href="register.html" class="btn btn-green btn-sm">S'inscrire</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index.html">Accueil</a><a href="formations.html">Formations</a>
+  <a href="ebooks.html">Ebooks</a><a href="contact.html">Contact</a>
+  <div class="drawer-auth" style="display:flex;flex-direction:column;gap:.5rem;border-top:1px solid var(--border);padding-top:.8rem">
+    <a href="login.html">Connexion</a><a href="register.html">S'inscrire</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-blob page-hero-blob1"></div>
+  <div class="page-hero-blob page-hero-blob2"></div>
+  <div class="container page-hero-content">
+    <div style="max-width:640px">
+      <span class="sec-label sec-label-blue" style="margin-bottom:1rem;display:inline-flex">🎓 Catalogue Formations</span>
+      <h1 style="font-family:'Fraunces',serif;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--dark);margin-bottom:1rem;line-height:1.15">Formations pratiques pour <em style="font-style:italic;color:var(--blue)">booster ton business</em></h1>
+      <p style="font-size:1.05rem;color:var(--muted);line-height:1.7;margin-bottom:2rem">Des formations conçues pour être directement applicables. Marketing, e-commerce, finance, graphisme — tout ce dont tu as besoin pour réussir en Afrique.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="register.html" class="btn btn-primary btn-lg">🚀 Créer un compte gratuit</a>
+        <a href="contact.html"  class="btn btn-wa btn-lg">💬 Commander via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem">
+      <div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Rechercher une formation..." oninput="doSearch(this.value)" aria-label="Rechercher une formation">
+        </div>
+        <div class="filters" id="filterBar">
+          <button class="fpill on" onclick="applyFilter('formation',this)">Toutes</button>
+          <button class="fpill" onclick="applyFilter('formation-digital',this)">💻 Digital</button>
+          <button class="fpill" onclick="applyFilter('formation-business',this)">💼 Business</button>
+          <button class="fpill" onclick="applyFilter('formation-finance',this)">💰 Finance</button>
+          <button class="fpill" onclick="applyFilter('formation-personal',this)">🧘 Personnel</button>
+          <button class="fpill" onclick="applyFilter('formation-free',this)">🎁 Gratuit</button>
+        </div>
+      </div>
+      <div id="resultCount" style="font-size:.88rem;color:var(--muted);align-self:flex-end"></div>
+    </div>
+    <div class="prod-grid" id="formationsGrid"></div>
+  </div>
+</section>
+
+<section class="section how-section">
+  <div class="container">
+    <div class="how-inner">
+      <div class="how-text">
+        <span class="sec-label sec-label-green">📋 Pourquoi nos formations ?</span>
+        <h2>Des formations pensées pour le marché africain</h2>
+        <p>Chaque formation est conçue spécifiquement pour les entrepreneurs et professionnels africains. Des exemples locaux, des stratégies adaptées, des résultats concrets.</p>
+        <div class="how-steps">
+          <div class="hstep"><div class="hstep-num on">✓</div><div class="hstep-content"><h4>100% pratique et actionnable</h4><p>Des exercices concrets pour appliquer immédiatement</p></div></div>
+          <div class="hstep"><div class="hstep-num">✓</div><div class="hstep-content"><h4>Support WhatsApp inclus</h4><p>Des questions ? Notre équipe répond en moins de 2h</p></div></div>
+          <div class="hstep"><div class="hstep-num">✓</div><div class="hstep-content"><h4>Accès à vie</h4><p>Télécharge une fois, accède pour toujours à ton contenu</p></div></div>
+        </div>
+      </div>
+      <div class="how-box">
+        <h3>💬 Comment commander ?</h3>
+        <div class="wa-card"><div class="wc-icon">1️⃣</div><div class="wc-info"><strong>Choisis ta formation</strong><span>Clique sur "Commander"</span></div></div>
+        <div class="wa-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)"><div class="wc-icon">2️⃣</div><div class="wc-info"><strong>Tu es redirigé sur WhatsApp</strong><span>Le nom et le prix sont pré-remplis</span></div></div>
+        <div class="wa-card" style="background:rgba(47,168,79,.12);border-color:rgba(37,211,102,.3)"><div class="wc-icon">3️⃣</div><div class="wc-info"><strong>Tu reçois ta formation</strong><span>Livraison rapide après confirmation</span></div></div>
+        <div style="margin-top:1.2rem"><a href="contact.html" class="btn btn-wa btn-block">💬 Nous contacter</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="fb-wm">HIMOOR<span>EUP</span></span><p>Centre de formation en ligne dédié à l'Afrique.</p></div>
+      <div class="footer-col"><h4>Catalogue</h4><a href="formations.html">Formations</a><a href="ebooks.html">Ebooks</a></div>
+      <div class="footer-col"><h4>Compte</h4><a href="register.html">S'inscrire</a><a href="login.html">Connexion</a><a href="dashboard.html">Mon espace</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">WhatsApp</a><a href="mailto:contact@himooreup.com">Email</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 HimooreUP · Tous droits réservés</p></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+let currentFilter = 'formation';
+function applyFilter(f, btn) {
+  document.querySelectorAll('.fpill').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  currentFilter = f;
+  document.getElementById('searchInput').value = '';
+  renderFiltered(f);
+}
+function renderFiltered(f) {
+  let list = S.products.filter(p => p.active && p.type === 'formation');
+  if (f === 'formation-free') list = list.filter(p => p.price === 0);
+  else if (f.startsWith('formation-')) {
+    const cat = f.replace('formation-', '');
+    list = list.filter(p => p.cat === cat);
+  }
+  const grid = document.getElementById('formationsGrid');
+  grid.innerHTML = list.length ? list.map(p => renderProductCard(p)).join('') : '<p style="color:var(--muted);text-align:center;padding:3rem;grid-column:1/-1">Aucune formation trouvée.</p>';
+  document.getElementById('resultCount').textContent = list.length + ' formation' + (list.length > 1 ? 's' : '');
+}
+function doSearch(q) {
+  if (!q.trim()) { renderFiltered(currentFilter); return; }
+  const list = S.products.filter(p => p.active && p.type === 'formation' && (p.title.toLowerCase().includes(q.toLowerCase()) || p.desc.toLowerCase().includes(q.toLowerCase())));
+  document.getElementById('formationsGrid').innerHTML = list.length ? list.map(p => renderProductCard(p)).join('') : '<p style="color:var(--muted);text-align:center;padding:3rem;grid-column:1/-1">Aucun résultat pour "' + q + '".</p>';
+  document.getElementById('resultCount').textContent = list.length + ' résultat' + (list.length > 1 ? 's' : '');
+}
+document.addEventListener('DOMContentLoaded', () => renderFiltered('formation'));
+</script>
+</body>
+</html>
