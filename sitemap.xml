@@ -38,5 +38,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+<url>
+  <loc>https://himooreup.netlify.app/creer-images-ia.html</loc>
+</url>
 </urlset>
