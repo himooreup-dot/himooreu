@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créer des images avec l'IA : Guide Complet 2025 – HimooreUP</title>
+<meta name="description" content="Découvrez comment créer des images professionnelles avec l'intelligence artificielle en 2025. Midjourney, DALL·E, Canva AI, Stable Diffusion — comparatif, prompts et conseils pratiques pour les entrepreneurs africains.">
+<meta name="keywords" content="création image IA, intelligence artificielle images, Midjourney, DALL-E, Canva AI, prompts IA, design IA Afrique, générer images IA gratuitement">
+<meta name="author" content="HimooreUP">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://himooreup.com/article.html">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="article">
+<meta property="og:title"       content="Créer des images avec l'IA : Guide Complet 2025">
+<meta property="og:description" content="Midjourney, DALL·E, Canva AI — tout ce qu'il faut savoir pour créer des visuels pro avec l'IA, même sans compétences en design.">
+<meta property="og:url"         content="https://himooreup.com/article.html">
+<meta property="og:site_name"   content="HimooreUP">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="Créer des images avec l'IA : Guide Complet 2025 – HimooreUP">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Créer des images avec l'IA : Guide Complet 2025",
+  "description": "Guide complet pour créer des images professionnelles avec l'intelligence artificielle en 2025.",
+  "author": { "@type": "Organization", "name": "HimooreUP" },
+  "publisher": { "@type": "Organization", "name": "HimooreUP", "url": "https://himooreup.com" },
+  "datePublished": "2025-01-01",
+  "dateModified": "2025-04-17",
+  "mainEntityOfPage": "https://himooreup.com/article.html",
+  "keywords": "création image IA, Midjourney, DALL-E, Canva AI, prompts IA"
+}
+</script>
+
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ── ARTICLE PAGE LAYOUT ── */
+.article-page {
+  padding-top: var(--nav-h);
+  background: var(--white);
+}
+
+/* ── HERO ── */
+.article-hero {
+  background: linear-gradient(160deg, var(--dark) 0%, #0f2640 55%, #0d3320 100%);
+  padding: 80px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+.article-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(29,111,164,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(47,168,79,.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.article-hero-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+}
+.article-hero-meta {
+  display: flex; align-items: center; gap: .8rem;
+  flex-wrap: wrap; margin-bottom: 1.4rem;
+}
+.art-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 13px; border-radius: 50px;
+  font-size: .72rem; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+}
+.art-tag-ai   { background: rgba(90,174,214,.18); color: var(--blue3); border: 1px solid rgba(90,174,214,.3); }
+.art-tag-new  { background: rgba(245,166,35,.18); color: #f5c842;     border: 1px solid rgba(245,166,35,.3); }
+.art-date     { font-size: .8rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 5px; }
+.art-read     { font-size: .8rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 5px; }
+
+.article-hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  color: #fff;
+  line-height: 1.12;
+  margin-bottom: 1.2rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--blue3); }
+
+.article-hero-lead {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.6);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  max-width: 540px;
+}
+.hero-author-row {
+  display: flex; align-items: center; gap: .9rem;
+}
+.hero-author-av {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 800; font-size: .95rem; flex-shrink: 0;
+}
+.hero-author-name  { font-weight: 700; color: #fff; font-size: .9rem; }
+.hero-author-label { font-size: .78rem; color: rgba(255,255,255,.4); }
+
+/* Hero visual — AI illustration */
+.hero-ai-card {
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.hero-ai-topbar {
+  height: 38px;
+  background: rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  display: flex; align-items: center;
+  padding: 0 1rem; gap: .5rem;
+}
+.topbar-dot { width: 10px; height: 10px; border-radius: 50%; }
+.td-r { background: #ef5350; } .td-y { background: #ffca28; } .td-g { background: #26a69a; }
+.hero-ai-screen {
+  padding: 1.2rem;
+}
+.ai-prompt-box {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  padding: .9rem 1rem;
+  margin-bottom: 1rem;
+  font-size: .82rem;
+  color: rgba(255,255,255,.65);
+  line-height: 1.5;
+}
+.ai-prompt-box .prompt-label {
+  font-size: .68rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .8px; color: var(--blue3); margin-bottom: .4rem;
+  display: block;
+}
+.ai-images-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .7rem;
+}
+.ai-img-thumb {
+  border-radius: 10px;
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.ai-img-thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.ait1 { background: linear-gradient(135deg, #1a3a6e, #0d5a8a); }
+.ait2 { background: linear-gradient(135deg, #2d5016, #1a6b30); }
+.ait3 { background: linear-gradient(135deg, #5a1a6e, #2d0d8a); }
+.ait4 { background: linear-gradient(135deg, #6e3a1a, #8a5a0d); }
+.ai-generating {
+  display: flex; align-items: center; gap: .5rem;
+  margin-top: 1rem; font-size: .78rem; color: rgba(255,255,255,.4);
+}
+.gen-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green2);
+  animation: blink 1.4s ease-in-out infinite;
+}
+.gen-dot:nth-child(2) { animation-delay: .2s; }
+.gen-dot:nth-child(3) { animation-delay: .4s; }
+
+/* ── TABLE OF CONTENTS ── */
+.toc-box {
+  background: var(--bluebg);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--r2);
+  padding: 1.6rem 1.8rem;
+  margin-bottom: 2.5rem;
+}
+.toc-box h3 {
+  font-weight: 800; font-size: .95rem; color: var(--dark);
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;
+}
+.toc-list { display: flex; flex-direction: column; gap: .45rem; }
+.toc-item {
+  display: flex; align-items: center; gap: .6rem;
+  font-size: .9rem; color: var(--blue);
+  text-decoration: none; font-weight: 600; transition: color .2s;
+}
+.toc-item:hover { color: var(--blue2); }
+.toc-item .toc-num {
+  width: 22px; height: 22px; border-radius: 6px;
+  background: var(--blue); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: .68rem; font-weight: 800; flex-shrink: 0;
+}
+
+/* ── ARTICLE BODY ── */
+.article-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 3.5rem;
+  align-items: start;
+  padding: 60px 0 80px;
+}
+
+.article-body h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--dark);
+  margin-bottom: .8rem;
+  margin-top: 2.8rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.article-body h2:first-child { margin-top: 0; }
+
+.article-body h3 {
+  font-size: 1.1rem; font-weight: 800;
+  color: var(--dark); margin-top: 1.8rem; margin-bottom: .6rem;
+}
+.article-body p {
+  color: #374a5c; font-size: .97rem; line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.article-body ul, .article-body ol {
+  margin-left: 1.2rem; margin-bottom: 1.2rem;
+  list-style: initial;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.article-body ol { list-style: decimal; }
+.article-body li {
+  color: #374a5c; font-size: .97rem; line-height: 1.7;
+}
+.article-body strong { color: var(--dark); }
+.article-body a { color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.article-body a:hover { color: var(--blue2); }
+
+/* Callout boxes */
+.callout {
+  border-radius: var(--r2);
+  padding: 1.3rem 1.5rem;
+  margin: 1.8rem 0;
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.callout-tip    { background: var(--greenbg); border-left: 4px solid var(--green); }
+.callout-info   { background: var(--bluebg);  border-left: 4px solid var(--blue);  }
+.callout-warn   { background: #fff8ec;         border-left: 4px solid var(--gold);  }
+.callout-icon   { font-size: 1.4rem; flex-shrink: 0; margin-top: -.1rem; }
+.callout-body h4 { font-weight: 800; font-size: .9rem; color: var(--dark); margin-bottom: .3rem; }
+.callout-body p  { font-size: .88rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+/* Tool cards */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+.tool-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r2);
+  padding: 1.3rem;
+  transition: all .22s;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.tool-card:hover { border-color: var(--blue3); box-shadow: var(--shadow); transform: translateY(-3px); }
+.tool-card-head  { display: flex; align-items: center; gap: .7rem; }
+.tool-logo {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.tl-mj  { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+.tl-da  { background: linear-gradient(135deg, #10a37f, #0e8a6d); }
+.tl-ca  { background: linear-gradient(135deg, #00c4cc, #0096a3); }
+.tl-sd  { background: linear-gradient(135deg, #e07b39, #c4622a); }
+.tl-ad  { background: linear-gradient(135deg, #001e36, #00214d); }
+.tl-fi  { background: linear-gradient(135deg, #a259ff, #7b2fff); }
+.tool-card-name  { font-weight: 800; font-size: .95rem; color: var(--dark); }
+.tool-card-type  { font-size: .72rem; color: var(--muted); font-weight: 600; }
+.tool-card-desc  { font-size: .85rem; color: var(--muted); line-height: 1.55; }
+.tool-tags       { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tool-tag {
+  padding: 2px 9px; border-radius: 50px; font-size: .7rem; font-weight: 700;
+}
+.tt-free  { background: var(--greenbg); color: var(--green); }
+.tt-paid  { background: var(--bluebg);  color: var(--blue);  }
+.tt-web   { background: #f5f5f5; color: #555; }
+.tt-api   { background: #fff3e0; color: #e65100; }
+
+/* Prompt examples */
+.prompt-card {
+  background: var(--dark);
+  border-radius: var(--r2);
+  padding: 1.4rem 1.5rem;
+  margin: 1.2rem 0;
+  position: relative;
+}
+.prompt-card .pc-label {
+  font-size: .72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .8px; color: var(--blue3); margin-bottom: .6rem; display: block;
+}
+.prompt-card .pc-text {
+  font-family: 'Courier New', monospace;
+  font-size: .88rem;
+  color: rgba(255,255,255,.85);
+  line-height: 1.65;
+}
+.prompt-card .pc-copy {
+  position: absolute; top: .9rem; right: .9rem;
+  background: rgba(255,255,255,.1); border: none; border-radius: 8px;
+  padding: 5px 10px; font-size: .72rem; color: rgba(255,255,255,.6);
+  cursor: pointer; font-family: 'Outfit', sans-serif; font-weight: 700;
+  transition: all .2s;
+}
+.prompt-card .pc-copy:hover { background: rgba(255,255,255,.18); color: #fff; }
+
+/* Comparison table */
+.cmp-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r2);
+  border: 1.5px solid var(--border);
+  margin: 1.5rem 0;
+}
+.cmp-table {
+  width: 100%; border-collapse: collapse; min-width: 540px;
+}
+.cmp-table thead tr { background: var(--dark); }
+.cmp-table th {
+  padding: .9rem 1rem; font-size: .78rem; font-weight: 700;
+  color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .5px;
+  text-align: left;
+}
+.cmp-table tbody tr { border-bottom: 1px solid var(--border); }
+.cmp-table tbody tr:last-child { border-bottom: none; }
+.cmp-table tbody tr:nth-child(even) { background: var(--light); }
+.cmp-table td {
+  padding: .85rem 1rem; font-size: .88rem; color: var(--text);
+}
+.cmp-table td strong { color: var(--dark); }
+.cmp-yes { color: var(--green); font-weight: 800; }
+.cmp-no  { color: var(--muted); }
+.cmp-partial { color: var(--gold); font-weight: 700; }
+
+/* Step boxes */
+.steps-list { display: flex; flex-direction: column; gap: 1.2rem; margin: 1.5rem 0; }
+.step-box {
+  display: flex; gap: 1.1rem; align-items: flex-start;
+  padding: 1.1rem 1.2rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r2);
+  transition: border-color .2s;
+}
+.step-box:hover { border-color: var(--blue3); }
+.step-n {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue), var(--blue2));
+  color: #fff; font-weight: 900; font-size: .9rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-body h4 { font-weight: 800; font-size: .95rem; color: var(--dark); margin-bottom: .25rem; }
+.step-body p  { font-size: .87rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+/* Pull quote */
+.pull-quote {
+  border-left: 4px solid var(--blue);
+  padding: 1.2rem 1.5rem;
+  background: var(--bluebg);
+  border-radius: 0 var(--r) var(--r) 0;
+  margin: 2rem 0;
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--dark);
+  line-height: 1.5;
+}
+
+/* Section divider */
+.sec-divider {
+  height: 1px; background: var(--border);
+  margin: 2.5rem 0;
+}
+
+/* ── SIDEBAR ── */
+.article-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 20px);
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.sidebar-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r2);
+  padding: 1.4rem;
+}
+.sidebar-card h4 {
+  font-weight: 800; font-size: .88rem; color: var(--dark);
+  margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem;
+}
+.related-item {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none; transition: all .2s;
+}
+.related-item:last-child { border-bottom: none; padding-bottom: 0; }
+.related-item:hover .ri-title { color: var(--blue); }
+.ri-thumb {
+  width: 50px; height: 42px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.ri-title { font-weight: 700; font-size: .82rem; color: var(--dark); line-height: 1.3; margin-bottom: .15rem; }
+.ri-cat   { font-size: .72rem; color: var(--muted); }
+
+.sidebar-cta {
+  background: linear-gradient(145deg, var(--dark), #1a3148);
+  border-radius: var(--r2); padding: 1.6rem;
+  text-align: center;
+}
+.sidebar-cta h4 { color: #fff; font-family: 'Fraunces', serif; font-size: 1.05rem; margin-bottom: .5rem; }
+.sidebar-cta p  { color: rgba(255,255,255,.55); font-size: .83rem; line-height: 1.55; margin-bottom: 1.2rem; }
+
+.share-row {
+  display: flex; gap: .6rem;
+}
+.share-btn {
+  flex: 1; padding: 8px; border-radius: 10px; border: 1.5px solid var(--border);
+  background: #fff; font-size: .78rem; font-weight: 700; color: var(--muted);
+  cursor: pointer; text-align: center; transition: all .2s;
+  font-family: 'Outfit', sans-serif;
+}
+.share-btn:hover { border-color: var(--blue); color: var(--blue); }
+.progress-reading {
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  height: 3px; background: var(--border); z-index: 800;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  width: 0; transition: width .1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── CTA BOTTOM ── */
+.article-cta {
+  background: linear-gradient(135deg, var(--dark), #0f2640);
+  padding: 70px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.article-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(29,111,164,.15), transparent);
+}
+.article-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.article-cta h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: #fff; margin-bottom: .8rem;
+}
+.article-cta p { color: rgba(255,255,255,.6); font-size: .98rem; line-height: 1.7; margin-bottom: 2rem; }
+
+/* ── ANIMATIONS ── */
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.7)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.fade-up { animation: fadeUp .6s ease both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .article-hero-inner { grid-template-columns: 1fr; }
+  .hero-ai-card { display: none; }
+  .article-layout { grid-template-columns: 1fr; }
+  .article-sidebar { position: static; }
+  .tools-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-menu { display: none; }
+  .article-hero { padding: 50px 0 50px; }
+  .toc-box { padding: 1.2rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body class="article-page">
+
+<!-- ── READING PROGRESS ── -->
+<div class="progress-reading"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" role="navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">HIMOOR<span>EUP</span></a>
+      <div class="nav-menu">
+        <a href="index.html">Accueil</a>
+        <a href="formations.html">Formations</a>
+        <a href="ebooks.html">Ebooks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-right" id="navRight">
+        <a href="login.html"    class="btn btn-outline btn-sm">Connexion</a>
+        <a href="register.html" class="btn btn-green   btn-sm">S'inscrire</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index.html">Accueil</a>
+  <a href="formations.html">Formations</a>
+  <a href="ebooks.html">Ebooks</a>
+  <a href="contact.html">Contact</a>
+  <div class="drawer-auth" style="display:flex;flex-direction:column;gap:.5rem;border-top:1px solid var(--border);padding-top:.8rem">
+    <a href="login.html">Connexion</a>
+    <a href="register.html">S'inscrire</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+
+      <div class="fade-up">
+        <div class="article-hero-meta">
+          <span class="art-tag art-tag-ai">🤖 Intelligence Artificielle</span>
+          <span class="art-tag art-tag-new">✨ Guide 2025</span>
+          <span class="art-date">📅 Avril 2025</span>
+          <span class="art-read">⏱ 12 min de lecture</span>
+        </div>
+
+        <h1>Créer des images avec l'<em>IA</em> : Le guide complet pour les entrepreneurs</h1>
+
+        <p class="article-hero-lead">
+          Midjourney, DALL·E, Canva AI, Stable Diffusion... L'IA a révolutionné la création visuelle. 
+          Découvrez comment générer des images professionnelles en quelques secondes, même sans aucune 
+          compétence en design — et comment l'intégrer à votre business.
+        </p>
+
+        <div class="hero-author-row">
+          <div class="hero-author-av">HU</div>
+          <div>
+            <div class="hero-author-name">Équipe HimooreUP</div>
+            <div class="hero-author-label">Centre de Formation · Upgrade Ton Futur</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Visual -->
+      <div class="hero-ai-card fade-up" style="animation-delay:.15s">
+        <div class="hero-ai-topbar">
+          <div class="topbar-dot td-r"></div>
+          <div class="topbar-dot td-y"></div>
+          <div class="topbar-dot td-g"></div>
+          <span style="margin-left:.5rem;font-size:.72rem;color:rgba(255,255,255,.35)">AI Image Generator</span>
+        </div>
+        <div class="hero-ai-screen">
+          <div class="ai-prompt-box">
+            <span class="prompt-label">Prompt</span>
+            "Un entrepreneur africain moderne dans son bureau, 
+            style photo réaliste, lumière naturelle, 
+            ambiance professionnelle et inspirante"
+          </div>
+          <div class="ai-images-grid">
+            <div class="ai-img-thumb ait1">🏢</div>
+            <div class="ai-img-thumb ait2">🌍</div>
+            <div class="ai-img-thumb ait3">💼</div>
+            <div class="ai-img-thumb ait4">⚡</div>
+          </div>
+          <div class="ai-generating">
+            <div class="gen-dot"></div>
+            <div class="gen-dot"></div>
+            <div class="gen-dot"></div>
+            <span>Génération en cours...</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARTICLE CONTENT ═══ -->
+<div class="container">
+  <div class="article-layout">
+
+    <!-- ─── BODY ─── -->
+    <main class="article-body" id="articleBody">
+
+      <!-- TABLE DES MATIÈRES -->
+      <div class="toc-box">
+        <h3>📋 Dans cet article</h3>
+        <div class="toc-list">
+          <a href="#intro"       class="toc-item"><span class="toc-num">1</span>Qu'est-ce que la création d'images par IA ?</a>
+          <a href="#outils"      class="toc-item"><span class="toc-num">2</span>Les meilleurs outils en 2025</a>
+          <a href="#comparatif"  class="toc-item"><span class="toc-num">3</span>Comparatif détaillé des plateformes</a>
+          <a href="#prompts"     class="toc-item"><span class="toc-num">4</span>L'art du prompt : comment rédiger</a>
+          <a href="#guide"       class="toc-item"><span class="toc-num">5</span>Guide étape par étape — Débutants</a>
+          <a href="#business"    class="toc-item"><span class="toc-num">6</span>Utiliser l'IA pour son business</a>
+          <a href="#limites"     class="toc-item"><span class="toc-num">7</span>Limites et bonnes pratiques</a>
+          <a href="#conclusion"  class="toc-item"><span class="toc-num">8</span>Conclusion</a>
+        </div>
+      </div>
+
+      <!-- ─ 1. INTRO ─ -->
+      <h2 id="intro">🤖 Qu'est-ce que la création d'images par IA ?</h2>
+
+      <p>La <strong>création d'images par intelligence artificielle</strong> est une technologie qui permet de générer des visuels à partir d'une simple description textuelle — appelée <strong>prompt</strong>. Tu décris ce que tu veux voir, et l'IA le crée en quelques secondes.</p>
+
+      <p>Cette révolution technologique est propulsée par des modèles de diffusion (<em>diffusion models</em>) entraînés sur des milliards d'images. Ces modèles apprennent les relations entre les mots et les visuels, ce qui leur permet de "dessiner" n'importe quoi à la demande.</p>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">💡</div>
+        <div class="callout-body">
+          <h4>Pourquoi c'est important pour vous ?</h4>
+          <p>Jusqu'ici, créer un visuel professionnel nécessitait un graphiste ou des heures de formation. Aujourd'hui, en 30 secondes et quelques mots, n'importe qui peut générer des images de qualité professionnelle — pour son site, ses réseaux sociaux, ses présentations ou ses produits.</p>
+        </div>
+      </div>
+
+      <p>En 2025, les outils de génération d'images IA sont devenus suffisamment accessibles et puissants pour être adoptés massivement par les entrepreneurs, les créateurs de contenu et les agences de communication — en Afrique comme partout dans le monde.</p>
+
+      <div class="pull-quote">
+        "L'IA ne remplace pas les créatifs. Elle donne à chaque entrepreneur les outils d'un studio créatif complet."
+      </div>
+
+      <!-- ─ 2. OUTILS ─ -->
+      <h2 id="outils">🛠️ Les meilleurs outils de génération d'images en 2025</h2>
+
+      <p>Le marché des générateurs d'images IA a explosé. Voici les plateformes incontournables à connaître :</p>
+
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-card-head">
+            <div class="tool-logo tl-mj">🎨</div>
+            <div>
+              <div class="tool-card-name">Midjourney</div>
+              <div class="tool-card-type">Génération d'images · Premium</div>
+            </div>
+          </div>
+          <div class="tool-card-desc">Le plus puissant et artistique. Résultats exceptionnels pour les visuels marketing, couvertures, et illustrations créatives. Via Discord.</div>
+          <div class="tool-tags">
+            <span class="tool-tag tt-paid">Payant</span>
+            <span class="tool-tag tt-web">Web/Discord</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-head">
+            <div class="tool-logo tl-da">🟢</div>
+            <div>
+              <div class="tool-card-name">DALL·E 3</div>
+              <div class="tool-card-type">OpenAI · Intégré à ChatGPT</div>
+            </div>
+          </div>
+          <div class="tool-card-desc">Intégré directement dans ChatGPT Plus. Idéal pour les prompts en langage naturel. Comprend parfaitement les instructions complexes.</div>
+          <div class="tool-tags">
+            <span class="tool-tag tt-paid">ChatGPT Plus</span>
+            <span class="tool-tag tt-api">API dispo</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-head">
+            <div class="tool-logo tl-ca">✨</div>
+            <div>
+              <div class="tool-card-name">Canva AI</div>
+              <div class="tool-card-type">Design + IA · Très accessible</div>
+            </div>
+          </div>
+          <div class="tool-card-desc">La solution la plus simple pour les débutants. Génère des images directement dans tes designs Canva. Version gratuite disponible.</div>
+          <div class="tool-tags">
+            <span class="tool-tag tt-free">Gratuit limité</span>
+            <span class="tool-tag tt-web">Web</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-head">
+            <div class="tool-logo tl-sd">🔥</div>
+            <div>
+              <div class="tool-card-name">Stable Diffusion</div>
+              <div class="tool-card-type">Open Source · Très personnalisable</div>
+            </div>
+          </div>
+          <div class="tool-card-desc">Solution open source, gratuite et personnalisable à l'infini. Nécessite une installation technique mais offre un contrôle total.</div>
+          <div class="tool-tags">
+            <span class="tool-tag tt-free">Gratuit</span>
+            <span class="tool-tag tt-web">Local/Web</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-head">
+            <div class="tool-logo tl-ad">🌊</div>
+            <div>
+              <div class="tool-card-name">Adobe Firefly</div>
+              <div class="tool-card-type">Adobe · Pour les pros</div>
+            </div>
+          </div>
+          <div class="tool-card-desc">Intégré à Photoshop et Creative Cloud. Génère des images 100% libres de droits commerciaux. Parfait pour les pros Adobe.</div>
+          <div class="tool-tags">
+            <span class="tool-tag tt-free">Gratuit limité</span>
+            <span class="tool-tag tt-web">Adobe CC</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-head">
+            <div class="tool-logo tl-fi">⚡</div>
+            <div>
+              <div class="tool-card-name">Flux / Leonardo AI</div>
+              <div class="tool-card-type">Nouvelles générations 2025</div>
+            </div>
+          </div>
+          <div class="tool-card-desc">Les nouveaux entrants de 2024-2025 qui challengent Midjourney. Qualité photographique impressionnante avec des versions gratuites généreuses.</div>
+          <div class="tool-tags">
+            <span class="tool-tag tt-free">Gratuit</span>
+            <span class="tool-tag tt-web">Web</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">🎯</div>
+        <div class="callout-body">
+          <h4>Notre recommandation pour débuter</h4>
+          <p>Commence par <strong>Canva AI</strong> (gratuit, intuitif) pour créer tes premiers visuels. Une fois à l'aise avec les prompts, passe à <strong>Midjourney</strong> pour une qualité professionnelle, ou <strong>DALL·E 3 via ChatGPT</strong> si tu l'utilises déjà.</p>
+        </div>
+      </div>
+
+      <!-- ─ 3. COMPARATIF ─ -->
+      <h2 id="comparatif">📊 Comparatif détaillé des plateformes</h2>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Outil</th>
+              <th>Qualité</th>
+              <th>Facilité</th>
+              <th>Gratuit</th>
+              <th>Droits commerciaux</th>
+              <th>Idéal pour</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Midjourney</strong></td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐</td>
+              <td><span class="cmp-no">Non</span></td>
+              <td><span class="cmp-yes">✓ Payant</span></td>
+              <td>Marketing, branding, couvertures</td>
+            </tr>
+            <tr>
+              <td><strong>DALL·E 3</strong></td>
+              <td>⭐⭐⭐⭐½</td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td><span class="cmp-partial">Limité</span></td>
+              <td><span class="cmp-yes">✓ Oui</span></td>
+              <td>Prompts complexes, illustrations</td>
+            </tr>
+            <tr>
+              <td><strong>Canva AI</strong></td>
+              <td>⭐⭐⭐½</td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td><span class="cmp-yes">✓ Oui</span></td>
+              <td><span class="cmp-yes">✓ Oui</span></td>
+              <td>Réseaux sociaux, posts, flyers</td>
+            </tr>
+            <tr>
+              <td><strong>Stable Diffusion</strong></td>
+              <td>⭐⭐⭐⭐</td>
+              <td>⭐⭐</td>
+              <td><span class="cmp-yes">✓ Gratuit</span></td>
+              <td><span class="cmp-yes">✓ Open source</span></td>
+              <td>Développeurs, personnalisation</td>
+            </tr>
+            <tr>
+              <td><strong>Adobe Firefly</strong></td>
+              <td>⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐</td>
+              <td><span class="cmp-partial">Limité</span></td>
+              <td><span class="cmp-yes">✓ 100% libre</span></td>
+              <td>Utilisateurs Adobe, pros</td>
+            </tr>
+            <tr>
+              <td><strong>Leonardo AI</strong></td>
+              <td>⭐⭐⭐⭐½</td>
+              <td>⭐⭐⭐⭐</td>
+              <td><span class="cmp-yes">✓ Généreux</span></td>
+              <td><span class="cmp-yes">✓ Oui</span></td>
+              <td>Meilleur rapport qualité/prix</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ─ 4. PROMPTS ─ -->
+      <h2 id="prompts">✍️ L'art du prompt : comment bien décrire ce que vous voulez</h2>
+
+      <p>Le <strong>prompt</strong> est la description textuelle que tu fournis à l'IA pour lui indiquer ce qu'elle doit générer. C'est la compétence clé à maîtriser pour obtenir des résultats professionnels.</p>
+
+      <h3>La structure d'un bon prompt</h3>
+      <p>Un prompt efficace se compose généralement de 4 éléments :</p>
+      <ul>
+        <li><strong>Le sujet principal</strong> — ce que tu veux voir (personne, objet, lieu)</li>
+        <li><strong>Le style et l'ambiance</strong> — photo réaliste, illustration, aquarelle, 3D...</li>
+        <li><strong>L'éclairage et la composition</strong> — lumière naturelle, plan large, portrait...</li>
+        <li><strong>Les détails techniques</strong> — résolution, ratio, rendu (4K, 16:9, cinematic...)</li>
+      </ul>
+
+      <h3>Exemples de prompts pour les entrepreneurs</h3>
+
+      <div class="prompt-card">
+        <span class="pc-label">🛍️ Produit e-commerce</span>
+        <button class="pc-copy" onclick="copyPrompt(this)">📋 Copier</button>
+        <div class="pc-text">
+Product photography of a skincare cream bottle on a marble surface,
+natural daylight coming from the left, soft shadows, white background,
+professional commercial photography, high resolution, clean minimal style
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <span class="pc-label">📱 Post réseaux sociaux</span>
+        <button class="pc-copy" onclick="copyPrompt(this)">📋 Copier</button>
+        <div class="pc-text">
+Young African entrepreneur working on laptop in a modern coworking space,
+warm natural light, authentic candid photography style, happy and focused,
+wearing casual professional outfit, vibrant and energetic atmosphere, 
+shot on Sony A7 camera, portrait format 4:5
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <span class="pc-label">📖 Couverture ebook</span>
+        <button class="pc-copy" onclick="copyPrompt(this)">📋 Copier</button>
+        <div class="pc-text">
+Modern ebook cover design, "Guide du Business en Afrique" title,
+African continent silhouette with golden geometric patterns,
+deep navy blue and gold color palette, luxury minimalist style,
+professional typography, high contrast, digital illustration
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <span class="pc-label">🏢 Bannière professionnelle</span>
+        <button class="pc-copy" onclick="copyPrompt(this)">📋 Copier</button>
+        <div class="pc-text">
+Professional LinkedIn banner background, abstract geometric pattern
+in blue and green, modern corporate design, African-inspired motifs,
+subtle gradient from dark navy to emerald, 1584x396 pixels,
+clean and minimal, premium business aesthetic
+        </div>
+      </div>
+
+      <div class="callout callout-warn">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">
+          <h4>Évite ces erreurs courantes</h4>
+          <p>Ne sois pas trop vague ("une belle image"), ne demande pas trop d'éléments à la fois, évite les descriptions contradictoires. Commence simple, puis affine progressivement ton prompt en fonction des résultats.</p>
+        </div>
+      </div>
+
+      <h3>Mots-clés puissants à connaître</h3>
+      <ul>
+        <li><strong>Pour la qualité :</strong> <em>photorealistic, 8K, ultra-detailed, professional photography, masterpiece</em></li>
+        <li><strong>Pour le style :</strong> <em>cinematic, editorial, minimalist, vibrant, moody, flat design</em></li>
+        <li><strong>Pour l'éclairage :</strong> <em>golden hour, soft natural light, studio lighting, dramatic shadows</em></li>
+        <li><strong>Pour la composition :</strong> <em>close-up, aerial view, wide angle, rule of thirds, bokeh background</em></li>
+      </ul>
+
+      <div class="sec-divider"></div>
+
+      <!-- ─ 5. GUIDE ─ -->
+      <h2 id="guide">🚀 Guide étape par étape pour les débutants</h2>
+
+      <p>Voici comment créer tes premières images IA avec <strong>Canva AI</strong> (gratuit) en moins de 5 minutes :</p>
+
+      <div class="steps-list">
+        <div class="step-box">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <h4>Crée un compte Canva gratuit</h4>
+            <p>Va sur <a href="https://canva.com" target="_blank" rel="noopener">canva.com</a> et inscris-toi gratuitement avec ton email ou Google. L'IA de Canva est accessible même en version gratuite.</p>
+          </div>
+        </div>
+        <div class="step-box">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <h4>Ouvre un nouveau design</h4>
+            <p>Clique sur "Créer un design", choisis le format voulu (Post Instagram, bannière LinkedIn, flyer...) ou entre une taille personnalisée.</p>
+          </div>
+        </div>
+        <div class="step-box">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <h4>Accède au générateur d'images IA</h4>
+            <p>Dans le panneau gauche, clique sur "Applications" puis cherche "Générateur de texte en image" ou "Magic Media". C'est le générateur d'images IA intégré à Canva.</p>
+          </div>
+        </div>
+        <div class="step-box">
+          <div class="step-n">4</div>
+          <div class="step-body">
+            <h4>Écris ton premier prompt</h4>
+            <p>Décris l'image souhaitée en quelques mots clairs. Exemples : <em>"entrepreneur africain souriant dans un bureau moderne"</em> ou <em>"logo minimaliste d'une startup tech"</em>.</p>
+          </div>
+        </div>
+        <div class="step-box">
+          <div class="step-n">5</div>
+          <div class="step-body">
+            <h4>Génère et sélectionne</h4>
+            <p>Clique sur "Générer". Canva produit 4 variantes en quelques secondes. Sélectionne celle qui correspond le mieux à ta vision et glisse-la dans ton design.</p>
+          </div>
+        </div>
+        <div class="step-box">
+          <div class="step-n">6</div>
+          <div class="step-body">
+            <h4>Affine et exporte</h4>
+            <p>Si le résultat ne te convient pas, modifie ton prompt et regénère. Une fois satisfait, exporte en PNG ou JPG haute qualité. Tu peux aussi éditer l'image directement dans Canva.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-icon">🌟</div>
+        <div class="callout-body">
+          <h4>Astuce pro : le "style cohérent"</h4>
+          <p>Pour garder une identité visuelle cohérente sur tous tes visuels, intègre toujours les mêmes mots-clés de style dans tes prompts. Ex: "flat design, green and blue palette, modern African aesthetic" sur toutes tes créations.</p>
+        </div>
+      </div>
+
+      <div class="sec-divider"></div>
+
+      <!-- ─ 6. BUSINESS ─ -->
+      <h2 id="business">💼 Comment intégrer l'IA visuelle dans votre business</h2>
+
+      <p>L'IA de création d'images n'est pas qu'un outil créatif — c'est un <strong>accélérateur business</strong>. Voici les cas d'usage concrets qui transforment les entreprises africaines :</p>
+
+      <h3>📱 Marketing sur les réseaux sociaux</h3>
+      <p>Crée des dizaines de visuels pour tes posts Instagram, Facebook et LinkedIn en quelques minutes. Fini de payer un graphiste pour chaque publication. Génère des variantes A/B pour tester ce qui performe le mieux.</p>
+
+      <h3>🛒 E-commerce et fiches produits</h3>
+      <p>Génère des photos produits professionnelles sans studio photo. Crée des mises en scène variées pour le même produit, avec différents arrière-plans et ambiances selon ta cible.</p>
+
+      <h3>📧 Emails et newsletters</h3>
+      <p>Illustre chaque email avec des visuels uniques et personnalisés à ton audience. Les emails avec images génèrent 42% de clics supplémentaires par rapport aux emails textuels.</p>
+
+      <h3>📖 Couvertures de formations et ebooks</h3>
+      <p>C'est l'usage le plus direct pour les formateurs en ligne. Une belle couverture augmente de 30 à 60% le taux de conversion sur une page de vente. Génère-la en 5 minutes avec l'IA.</p>
+
+      <h3>🎯 Publicités payantes</h3>
+      <p>Crée des dizaines de variantes visuelles pour tes campagnes Facebook Ads ou Google Ads. Teste rapidement différents styles sans budget supplémentaire pour un graphiste.</p>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📊</div>
+        <div class="callout-body">
+          <h4>Chiffres clés à connaître</h4>
+          <p>Les entreprises utilisant l'IA pour leur contenu visuel réduisent leurs coûts de création graphique de <strong>60 à 80%</strong> et multiplient leur volume de contenu par <strong>3 à 5x</strong>. Le ROI moyen est atteint en moins de 2 semaines.</p>
+        </div>
+      </div>
+
+      <div class="sec-divider"></div>
+
+      <!-- ─ 7. LIMITES ─ -->
+      <h2 id="limites">⚠️ Limites et bonnes pratiques à connaître</h2>
+
+      <h3>Les limites actuelles</h3>
+      <ul>
+        <li><strong>Le texte :</strong> La plupart des IA ont du mal à générer du texte lisible directement dans les images. Ajoute-le dans Canva après génération.</li>
+        <li><strong>Les mains et visages :</strong> Encore des artefacts parfois sur les détails fins. Vérifie toujours ces zones.</li>
+        <li><strong>La cohérence des personnages :</strong> Difficile de garder le même personnage d'une image à l'autre sans outils spéciaux (IP-Adapter, ControlNet).</li>
+        <li><strong>Le droit d'auteur :</strong> Certaines IA ont été entraînées sur des images protégées — vérifie les conditions d'utilisation pour un usage commercial.</li>
+      </ul>
+
+      <h3>Les bonnes pratiques</h3>
+      <ul>
+        <li>✅ Vérifie toujours les droits commerciaux avant d'utiliser une image générée</li>
+        <li>✅ Ne génère jamais de visages de vraies personnes sans leur consentement</li>
+        <li>✅ Divulgue que tes visuels sont générés par IA si requis dans ta juridiction</li>
+        <li>✅ Conserve toujours tes prompts pour pouvoir recréer des variantes cohérentes</li>
+        <li>✅ Combine l'IA avec des retouches manuelles pour les résultats finaux professionnels</li>
+      </ul>
+
+      <div class="callout callout-warn">
+        <div class="callout-icon">⚖️</div>
+        <div class="callout-body">
+          <h4>Question juridique importante</h4>
+          <p>En 2025, le cadre légal de la propriété des images IA évolue encore. Pour un usage commercial serein, utilise <strong>Adobe Firefly</strong> (formé sur des contenus libres de droits) ou <strong>Midjourney Pro</strong> qui offre des garanties commerciales explicites.</p>
+        </div>
+      </div>
+
+      <div class="sec-divider"></div>
+
+      <!-- ─ 8. CONCLUSION ─ -->
+      <h2 id="conclusion">🎯 Conclusion : L'IA visuelle, une compétence essentielle en 2025</h2>
+
+      <p>La création d'images par IA n'est plus une technologie du futur — c'est une <strong>compétence professionnelle d'aujourd'hui</strong>. Les entrepreneurs qui la maîtrisent dès maintenant prennent une avance considérable sur leur concurrence.</p>
+
+      <p>Pour résumer les points clés de ce guide :</p>
+      <ul>
+        <li><strong>Commence avec Canva AI</strong> si tu es débutant — gratuit, simple, efficace</li>
+        <li><strong>Passe à Midjourney ou DALL·E</strong> pour une qualité professionnelle</li>
+        <li><strong>Maîtrise l'art du prompt</strong> — c'est la compétence qui fait la différence</li>
+        <li><strong>Intègre l'IA dans ta chaîne de création</strong> de contenu marketing</li>
+        <li><strong>Respecte les droits</strong> et vérifie toujours l'usage commercial autorisé</li>
+      </ul>
+
+      <p>Tu veux aller plus loin ? Notre formation <strong>"ChatGPT pour Entrepreneurs"</strong> t'enseigne comment utiliser l'IA au quotidien pour automatiser ta création de contenu, rédiger tes posts, et générer des visuels — tout ça dans un seul guide pratique et actionnable.</p>
+
+      <div style="background:linear-gradient(135deg,var(--bluebg),var(--greenbg));border-radius:var(--r2);padding:1.6rem;text-align:center;margin-top:1.5rem">
+        <div style="font-size:2rem;margin-bottom:.6rem">🤖</div>
+        <h3 style="font-family:'Fraunces',serif;color:var(--dark);margin-bottom:.5rem">Prêt à créer tes premières images IA ?</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.2rem">Rejoins HimooreUP et accède à notre formation ChatGPT pour Entrepreneurs.</p>
+        <a href="ebooks.html" class="btn btn-primary">📖 Voir la formation →</a>
+      </div>
+
+    </main>
+
+    <!-- ─── SIDEBAR ─── -->
+    <aside class="article-sidebar">
+
+      <!-- Share -->
+      <div class="sidebar-card">
+        <h4>🔗 Partager cet article</h4>
+        <div class="share-row">
+          <button class="share-btn" onclick="shareWa()">📱 WhatsApp</button>
+          <button class="share-btn" onclick="shareFb()">📘 Facebook</button>
+          <button class="share-btn" onclick="shareLink()">🔗 Copier</button>
+        </div>
+      </div>
+
+      <!-- Related products -->
+      <div class="sidebar-card">
+        <h4>📚 Formations liées</h4>
+        <a href="ebooks.html" class="related-item">
+          <div class="ri-thumb" style="background:var(--bluebg)">🤖</div>
+          <div>
+            <div class="ri-title">ChatGPT pour Entrepreneurs</div>
+            <div class="ri-cat">Ebook · 3 000 FCFA</div>
+          </div>
+        </a>
+        <a href="formations.html" class="related-item">
+          <div class="ri-thumb" style="background:linear-gradient(135deg,#fce8be,#f8d28a)">🎨</div>
+          <div>
+            <div class="ri-title">Graphisme avec Canva Pro</div>
+            <div class="ri-cat">Formation · 8 000 FCFA</div>
+          </div>
+        </a>
+        <a href="formations.html" class="related-item">
+          <div class="ri-thumb" style="background:var(--greenbg)">📱</div>
+          <div>
+            <div class="ri-title">Marketing Digital de A à Z</div>
+            <div class="ri-cat">Formation · 15 000 FCFA</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- CTA -->
+      <div class="sidebar-cta">
+        <h4>Upgrade ton futur avec HimooreUP</h4>
+        <p>Accède à toutes nos formations et ebooks pour booster ton business.</p>
+        <a href="register.html" class="btn btn-green btn-block">🚀 Créer mon compte gratuit</a>
+        <div style="margin-top:.8rem">
+          <a href="contact.html" class="btn btn-wa btn-block">💬 Commander sur WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="sidebar-card">
+        <h4>🏷️ Thèmes abordés</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem">
+          <span style="padding:4px 12px;background:var(--bluebg);color:var(--blue);border-radius:50px;font-size:.75rem;font-weight:700">IA</span>
+          <span style="padding:4px 12px;background:var(--bluebg);color:var(--blue);border-radius:50px;font-size:.75rem;font-weight:700">Midjourney</span>
+          <span style="padding:4px 12px;background:var(--bluebg);color:var(--blue);border-radius:50px;font-size:.75rem;font-weight:700">DALL·E</span>
+          <span style="padding:4px 12px;background:var(--greenbg);color:var(--green);border-radius:50px;font-size:.75rem;font-weight:700">Canva AI</span>
+          <span style="padding:4px 12px;background:var(--greenbg);color:var(--green);border-radius:50px;font-size:.75rem;font-weight:700">Prompts</span>
+          <span style="padding:4px 12px;background:var(--greenbg);color:var(--green);border-radius:50px;font-size:.75rem;font-weight:700">Design</span>
+          <span style="padding:4px 12px;background:#fff8ec;color:var(--gold);border-radius:50px;font-size:.75rem;font-weight:700">Business</span>
+          <span style="padding:4px 12px;background:#fff8ec;color:var(--gold);border-radius:50px;font-size:.75rem;font-weight:700">Marketing</span>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- ═══ CTA BOTTOM ═══ -->
+<section class="article-cta">
+  <div class="container">
+    <div class="article-cta-inner">
+      <span class="sec-label sec-label-green" style="margin-bottom:1rem">🎓 Continue d'apprendre</span>
+      <h2>Va encore plus loin avec nos formations</h2>
+      <p>L'IA n'est qu'un outil — c'est ta stratégie qui fait la différence. Nos formations t'apprennent à combiner l'IA avec le marketing digital, le business et la gestion financière pour des résultats concrets.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="formations.html" class="btn btn-primary btn-xl">🎓 Voir les formations</a>
+        <a href="ebooks.html"     class="btn btn-green   btn-xl">📖 Télécharger un ebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="fb-wm">HIMOOR<span>EUP</span></span>
+        <p>Centre de formation en ligne dédié à l'Afrique. Ressources premium pour upgrader tes compétences.</p>
+        <div style="margin-top:1.2rem">
+          <a href="contact.html" class="btn btn-wa btn-sm">💬 WhatsApp Support</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Catalogue</h4>
+        <a href="formations.html">Formations</a>
+        <a href="ebooks.html">Ebooks</a>
+      </div>
+      <div class="footer-col">
+        <h4>Compte</h4>
+        <a href="register.html">S'inscrire</a>
+        <a href="login.html">Se connecter</a>
+        <a href="dashboard.html">Mon espace</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">WhatsApp Support</a>
+        <a href="mailto:contact@himooreup.com">contact@himooreup.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HimooreUP · Tous droits réservés · Upgrade Ton Futur</p>
+      <div class="social-links">
+        <div class="social-link">📱</div>
+        <div class="social-link">🐦</div>
+        <div class="social-link">📘</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+/* ── Reading progress bar ── */
+window.addEventListener('scroll', () => {
+  const body   = document.documentElement;
+  const total  = body.scrollHeight - body.clientHeight;
+  const pct    = (window.scrollY / total) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+/* ── Copy prompt ── */
+function copyPrompt(btn) {
+  const text = btn.parentElement.querySelector('.pc-text').textContent.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ Copié !';
+    setTimeout(() => { btn.textContent = '📋 Copier'; }, 2000);
+  }).catch(() => {
+    btn.textContent = '✅ Copié !';
+    setTimeout(() => { btn.textContent = '📋 Copier'; }, 2000);
+  });
+}
+
+/* ── Share ── */
+const articleUrl   = encodeURIComponent(window.location.href);
+const articleTitle = encodeURIComponent('Créer des images avec l\'IA : Guide Complet 2025 – HimooreUP');
+
+function shareWa() {
+  window.open(`https://wa.me/?text=${articleTitle}%20${articleUrl}`, '_blank');
+}
+function shareFb() {
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`, '_blank');
+}
+function shareLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    toast('🔗 Lien copié dans le presse-papier !', 'success');
+  });
+}
+
+/* ── Smooth scroll for TOC ── */
+document.querySelectorAll('.toc-item').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const id = link.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 90;
+      window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
